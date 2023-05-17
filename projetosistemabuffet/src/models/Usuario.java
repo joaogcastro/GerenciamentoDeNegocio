@@ -1,7 +1,7 @@
-package entidades;
+package models;
 
 public class Usuario {
-	private String usuario;
+    private String usuario;
 	private String senha;
 	private String cargo;
 	
