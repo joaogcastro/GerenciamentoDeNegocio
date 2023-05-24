@@ -3,7 +3,10 @@ package controllers;
 import data.CredenciaisLogin;
 import models.Usuario;
 import util.Console;
+import views.MenuCozinheiro;
 import views.MenuGerente;
+import views.MenuMaster;
+import views.MenuVendedor;
 
 public class Login {
     public static void fazerLogin() {
@@ -21,16 +24,16 @@ public class Login {
 
                     switch (usuario.getCargo()) {
 						case "vendedor":
-							//MenuVendedor.exibirMenuVendedor();
+							MenuVendedor.exibirMenuVendedor();
 							break;
 						case "cozinheiro":
-							//MenuCozinheiro.exibirMenuCozinheiro();
+							MenuCozinheiro.exibirMenuCozinheiro();
 							break;
 						case "gerente":
 							MenuGerente.exibirMenuGerente(usuario);
 							break;
 						case "mestre":
-							//MenuMestre.exibirMenuMestre();
+							MenuMaster.exibirMenuMaster();
 							break;
 						default:
 							System.out.println("Cargo desconhecido.");

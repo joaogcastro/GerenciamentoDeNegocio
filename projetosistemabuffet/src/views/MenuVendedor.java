@@ -7,4 +7,8 @@ public class MenuVendedor {
     //resumo da festa
     //calendario de festas
     //cancelar festa
+    public static void exibirMenuVendedor(){
+        System.out.println("Menu vendedor");
+        
+    }
 }

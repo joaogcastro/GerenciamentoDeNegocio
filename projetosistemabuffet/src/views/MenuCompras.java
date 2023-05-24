@@ -5,4 +5,7 @@ public class MenuCompras {
     //consultar estoque
     //lista de fornecedores
     //adicionar itens ao estoque
+    public static void exibirMenuCompras(){
+        System.out.println("Menu Compras.");
+    }
 }
