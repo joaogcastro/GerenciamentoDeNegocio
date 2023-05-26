@@ -1,5 +1,27 @@
 {
     "java.project.sourcePaths": [
         "projetosistemabuffet/src"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "projetosistemabuffet/lib/antlr-2.7.7.jar",
+        "projetosistemabuffet/lib/byte-buddy-1.11.12.jar",
+        "projetosistemabuffet/lib/classmate-1.5.1.jar",
+        "projetosistemabuffet/lib/dom4j-2.1.3.jar",
+        "projetosistemabuffet/lib/FastInfoset-1.2.15.jar",
+        "projetosistemabuffet/lib/hibernate-commons-annotations-5.0.5.Final.jar",
+        "projetosistemabuffet/lib/hibernate-core-5.3.29.Final.jar",
+        "projetosistemabuffet/lib/hsqldb-2.6.1.jar",
+        "projetosistemabuffet/lib/istack-commons-runtime-3.0.7.jar",
+        "projetosistemabuffet/lib/jandex-2.0.5.Final.jar",
+        "projetosistemabuffet/lib/javassist-3.27.0-GA.jar",
+        "projetosistemabuffet/lib/javax.activation-api-1.2.0.jar",
+        "projetosistemabuffet/lib/javax.persistence-api-2.2.jar",
+        "projetosistemabuffet/lib/jaxb-api-2.3.1.jar",
+        "projetosistemabuffet/lib/jaxb-runtime-2.3.1.jar",
+        "projetosistemabuffet/lib/jboss-logging-3.4.2.Final.jar",
+        "projetosistemabuffet/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar",
+        "projetosistemabuffet/lib/stax-ex-1.8.jar",
+        "projetosistemabuffet/lib/txw2-2.3.1.jar"
     ]
 }
