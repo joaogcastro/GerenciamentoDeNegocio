@@ -1,15 +1,10 @@
 package views;
+import util.Console;
 
 public class MenuVendedor {
-
-    int opc;
-    //nova festa
-    //contato dos clientes
-    //tabela de valores e produtos disponiveis
-    //resumo da festa
-    //calendario de festas
-    //cancelar festa
+    
     public static void exibirMenuVendedor(){
+        int opc;
         System.out.println("Menu vendedor");
 
         do{
@@ -36,7 +31,8 @@ public class MenuVendedor {
 
             case 6:
         
-        }
+            }
         
-    }while (opc != 7)
+        }while (opc != 7);
+    }
 }

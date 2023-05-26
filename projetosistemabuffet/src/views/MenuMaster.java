@@ -1,10 +1,10 @@
 package views;
+import util.Console;
 
 public class MenuMaster {
-    int opc
-    //todas as funcionalidades dos demais +adicionar novos logins
+    
     public static void exibirMenuMaster(){
-
+        int opc;
         do{
         System.out.println("Menu master.");
         System.out.println("1 - Fazer lista de itens em falta.");
@@ -33,6 +33,6 @@ public class MenuMaster {
             case 7:
             }
 
-        }while (opc != 8)
+        }while (opc != 8);
     }
 }

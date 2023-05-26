@@ -1,13 +1,5 @@
 package views;
 
-//consultar festas
-//definir funcionarios para cada festa
-//controle financeiro
-//consultar estoque
-//cadastar funcionarios
-
-
-
 import models.Usuario;
 import util.Console;
 
@@ -28,6 +20,6 @@ public class MenuGerente {
                     System.out.println("Festas");
                     break;
             }
-        }while(opc!=3)
+        }while(opc!=3);
     }
 }
