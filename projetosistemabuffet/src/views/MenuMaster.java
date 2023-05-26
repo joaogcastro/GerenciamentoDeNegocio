@@ -33,6 +33,6 @@ public class MenuMaster {
             case 7:
             }
 
-        }while (opc != 8);
+        }while (opc != 8)
     }
 }

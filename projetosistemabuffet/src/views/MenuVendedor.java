@@ -38,5 +38,5 @@ public class MenuVendedor {
         
         }
         
-    }while (opc != 7);
+    }while (opc != 7)
 }
