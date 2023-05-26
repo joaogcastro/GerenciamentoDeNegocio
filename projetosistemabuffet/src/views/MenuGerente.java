@@ -25,7 +25,7 @@ public class MenuGerente {
                     break;
                 
                 case 2:
-                    System.out.println("FEstas");
+                    System.out.println("Festas");
                     break;
             }
         }while(opc!=3);
