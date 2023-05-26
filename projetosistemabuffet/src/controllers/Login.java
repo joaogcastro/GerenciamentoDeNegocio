@@ -16,7 +16,7 @@ public class Login {
 			usuario.setUsuario(Console.readString("Usuario: "));
             usuario.setSenha(Console.readString("Senha: "));
 			if(LoginData.autenticarLogin(usuario)==true) {
-				usuario = LoginData.retornUsuario(usuario);
+				usuario = LoginData.retornarUsuario(usuario);
 				System.out.println("Login realizado com sucesso");
 				logado=true;
                 switch (usuario.getCargo()) {

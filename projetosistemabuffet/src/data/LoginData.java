@@ -1,10 +1,8 @@
 package data;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
 import models.Usuario;
 
 public class LoginData {
@@ -78,7 +76,7 @@ public class LoginData {
         return false;
 	}
 
-	public static Usuario retornUsuario(Usuario usuario){
+	public static Usuario retornarUsuario(Usuario usuario){
 		EntityManager manager = EntityManagerFactory.getInstance();
 		Query consulta = manager.createQuery("from Usuario where usuario = :param");
 		consulta.setParameter("param", usuario.getUsuario());
@@ -90,6 +88,13 @@ public class LoginData {
         }
         return null;
 	}
-	
 
+	public static void listarUsuario(){
+		EntityManager manager = EntityManagerFactory.getInstance();
+		Query consulta = manager.createQuery("* from Usuario");
+		List<Usuario> usuarios = consulta.getResultList();
+		for(Usuario item: usuarios){
+			System.out.println("\nId: "+item.getId()+"    Cargo: "+item.getCargo()+"Usuario: "+item.getUsuario()+"    Senha: "+item.getSenha());
+		}
+	}
 }
