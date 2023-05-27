@@ -4,8 +4,7 @@ import util.Console;
 
 public class MenuCozinheiro {
     static int opc;
-    //consultar estoque
-    //dar baixa nos itens utilizados
+    
     public static void exibirMenuCozinheiro(){
 
         do{

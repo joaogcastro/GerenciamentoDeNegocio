@@ -3,10 +3,7 @@ package views;
 import util.Console;
 
 public class MenuCompras {
-    //fazer uma lista de itens faltando
-    //consultar estoque
-    //lista de fornecedores
-    //adicionar itens ao estoque
+    
     public static void exibirMenuCompras(){
         int opcao;
         System.out.println("Menu Compras.");
@@ -33,5 +30,7 @@ public class MenuCompras {
                 case 4: System.out.println("");
                 break;
 
+            }
+        }while(opcao != 5);
     }
-}while(opcao != 5);
+}

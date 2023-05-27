@@ -1,13 +1,5 @@
 package views;
 
-//consultar festas
-//definir funcionarios para cada festa
-//controle financeiro
-//consultar estoque
-//cadastar funcionarios
-
-
-
 import models.Usuario;
 import util.Console;
 
