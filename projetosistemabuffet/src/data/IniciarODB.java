@@ -8,6 +8,6 @@ public class IniciarODB {
         usuario.setUsuario("Master");
         usuario.setSenha("master");
         usuario.setCargo("master");
-        System.out.println("Credenciais incluidas: "+LoginData.incluir(usuario));
+        System.out.println("Credenciais incluidas: "+DataLogin.incluir(usuario));
     }
 }

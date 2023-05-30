@@ -1,16 +1,33 @@
 package models;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Festa {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idFesta;
-    private LocalDate dataInicio;
-    private LocalDate dataFim;
+    private LocalDateTime dataInicio;
+    private LocalDateTime dataFim;
+    private int numeroConvidados;
+    @ManyToOne
     private Cliente cliente;
+    @OneToOne
     private Decoracao decoracao;
+    @OneToOne
     private Cardapio cardapio;
-    private ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>(); //Funcionario CLT e taxa
+    @OneToMany
+    private List<Funcionario> funcionarios = new ArrayList<Funcionario>();
     private double valorFesta;
     private boolean pagamentoRealizado;
 
@@ -20,16 +37,16 @@ public class Festa {
     public void setIdFesta(int idFesta) {
         this.idFesta = idFesta;
     }
-    public LocalDate getDataInicio() {
+    public LocalDateTime getDataInicio() {
         return dataInicio;
     }
-    public void setDataInicio(LocalDate dataInicio) {
+    public void setDataInicio(LocalDateTime dataInicio) {
         this.dataInicio = dataInicio;
     }
-    public LocalDate getDataFim() {
+    public LocalDateTime getDataFim() {
         return dataFim;
     }
-    public void setDataFim(LocalDate dataFim) {
+    public void setDataFim(LocalDateTime dataFim) {
         this.dataFim = dataFim;
     }
     public Cliente getCliente() {
@@ -50,7 +67,7 @@ public class Festa {
     public void setCardapio(Cardapio cardapio) {
         this.cardapio = cardapio;
     }
-    public ArrayList<Funcionario> getFuncionarios() {
+    public List<Funcionario> getFuncionarios() {
         return funcionarios;
     }
     public void setFuncionarios(ArrayList<Funcionario> funcionarios) {
@@ -67,5 +84,14 @@ public class Festa {
     }
     public void setPagamentoRealizado(boolean pagamentoRealizado) {
         this.pagamentoRealizado = pagamentoRealizado;
+    }
+    public int getNumeroConvidados() {
+        return numeroConvidados;
+    }
+    public void setNumeroConvidados(int numeroConvidados) {
+        this.numeroConvidados = numeroConvidados;
+    }
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
     }
 }

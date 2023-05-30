@@ -6,15 +6,9 @@ public class MenuMaster {
     public static void exibirMenuMaster(){
         int opc;
         do{
-        System.out.println("Menu master.");
+        System.out.println("\n\nMenu master.");
         System.out.println("1 - Gerenciar credenciais de login.");
-		System.out.println("2 - Consultar estoque.");
-		System.out.println("3 - Lista de fornecedores.");
-        System.out.println("4 - Adicionar itens ao estoque.");
-        System.out.println("5 - Consultar Estoque:");
-        System.out.println("6 - Dar baixa em itens utilizados.");
-        System.out.println("7- Lista de funcionários\n2- Festas");
-        System.out.println("8 - Sair.");
+        System.out.println("2 - Sair.");
         opc = Console.readInt("Escolha a opção.");
 
         switch (opc){
@@ -22,18 +16,12 @@ public class MenuMaster {
                 MasterCredenciaisLogin.crudCredenciaisLogin();
                 break;    
             case 2:
-
-            case 3:
-
-            case 4:
-
-            case 5:
-
-            case 6:
-
-            case 7:
+                System.out.println("Fazendo logoff.");
+                break;
+            default:
+                System.out.println("Esta opção não é válida.");
+                break;
             }
-
-        }while (opc != 8);
+        }while (opc != 2);
     }
 }

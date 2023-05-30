@@ -1,15 +1,23 @@
 package models;
 
-import java.util.ArrayList;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+
+@Entity
 public class Cliente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true)
     private String cpf;
     private String nome;
     private String email;
     private String telefone;
     private String endereco;
-    private static ArrayList<Festa> historicoFestas = new ArrayList<Festa>();
 
     public int getId() {
         return id;
@@ -46,11 +54,5 @@ public class Cliente {
     }
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-    public static ArrayList<Festa> getHistoricoFestas() {
-        return historicoFestas;
-    }
-    public static void setHistoricoFestas(ArrayList<Festa> historicoFestas) {
-        Cliente.historicoFestas = historicoFestas;
     }
 }

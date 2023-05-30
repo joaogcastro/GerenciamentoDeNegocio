@@ -6,7 +6,7 @@ public class MenuCompras {
     
     public static void exibirMenuCompras(){
         int opcao;
-        System.out.println("Menu Compras.");
+        System.out.println("\n\nMenu Compras.");
         do {
 			
 			System.out.println("1 - Fazer lista de itens em falta.");
