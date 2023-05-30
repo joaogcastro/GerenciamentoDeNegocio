@@ -7,7 +7,7 @@ public class MenuMaster {
         int opc;
         do{
         System.out.println("Menu master.");
-        System.out.println("1 - Fazer lista de itens em falta.");
+        System.out.println("1 - Gerenciar credenciais de login.");
 		System.out.println("2 - Consultar estoque.");
 		System.out.println("3 - Lista de fornecedores.");
         System.out.println("4 - Adicionar itens ao estoque.");
@@ -19,7 +19,8 @@ public class MenuMaster {
 
         switch (opc){
             case 1:
-
+                MasterCredenciaisLogin.crudCredenciaisLogin();
+                break;    
             case 2:
 
             case 3:
