@@ -8,10 +8,10 @@ public class MenuVendedor {
         System.out.println("Menu vendedor");
 
         do{
-            System.out.println("\n\nMenu master.");
-            System.out.println("1 - nova festa.");
-            System.out.println("2 - contato dos clientes.");
-            System.out.println("3 - tabela de valores e produtos disponiveis.");
+            System.out.println("\n\nMenu Vendedor:");
+            System.out.println("1 - Nova festa.");
+            System.out.println("2 - Contato dos clientes.");
+            System.out.println("3 - Alterar cadastro dos clientes.");
             System.out.println("4 - resumo da festa.");
             System.out.println("5 - calendario de festas.");
             System.out.println("6 - cancelar festa.");
@@ -23,7 +23,8 @@ public class MenuVendedor {
                 VendedorNovaFesta.venderFesta();
                 break;
             case 2:
-                
+                VendedorContato.contatarClientes();
+                break;
             case 3:
 
             case 4:
