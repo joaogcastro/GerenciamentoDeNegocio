@@ -23,7 +23,8 @@ public class MenuVendedor {
                 VendedorNovaFesta.venderFesta();
                 break;
             case 2:
-                
+                VendedorContato.contatarClientes();
+                break;
             case 3:
 
             case 4:

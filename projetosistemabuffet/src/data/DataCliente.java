@@ -1,11 +1,8 @@
 package data;
 
-import javax.persistence.Query;
-
 import java.util.List;
-
 import javax.persistence.EntityManager;
-
+import javax.persistence.Query;
 import models.Cliente;
 
 public class DataCliente {
@@ -37,6 +34,25 @@ public class DataCliente {
             return resultados.get(0);
         } else {
             return null;
+        }
+    }
+
+    public static void listarClientes(){
+        EntityManager manager = EntityManagerFactory.getInstance();
+        Query consulta = manager.createQuery("select u from Cliente u");
+        List<Cliente> clientes = consulta.getResultList();
+        for(Cliente item: clientes){
+            System.out.println("Id: "+item.getId()+"   CPF: "+item.getCpf()+"   Nome: "+item.getNome()+"   Telefone: "+item.getTelefone()+"   Email: "+item.getEmail());
+        }
+    }
+
+    public static void procurarNomeClientes(String nome){
+        EntityManager manager = EntityManagerFactory.getInstance();
+        Query consulta = manager.createQuery("select from Cliente where nome like :param");
+        consulta.setParameter("param", nome);
+        List<Cliente> clientes = consulta.getResultList();
+        for(Cliente item: clientes){
+            System.out.println("Id: "+item.getId()+"   CPF: "+item.getCpf()+"   Nome: "+item.getNome()+"   Telefone: "+item.getTelefone()+"   Email: "+item.getEmail());
         }
     }
 }
