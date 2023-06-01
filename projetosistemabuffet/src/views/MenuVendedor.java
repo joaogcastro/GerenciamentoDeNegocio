@@ -20,13 +20,14 @@ public class MenuVendedor {
 
         switch (opc){
             case 1:
-                VendedorNovaFesta.venderFesta();
+                //VendedorNovaFesta.venderFesta();
                 break;
             case 2:
                 VendedorContato.contatarClientes();
                 break;
             case 3:
-
+                VendedorCliente.crudCliente();
+                break;
             case 4:
 
             case 5:

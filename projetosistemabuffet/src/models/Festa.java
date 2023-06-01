@@ -70,7 +70,7 @@ public class Festa {
     public List<Funcionario> getFuncionarios() {
         return funcionarios;
     }
-    public void setFuncionarios(ArrayList<Funcionario> funcionarios) {
+    public void setFuncionarios(List<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
     }
     public double getValorFesta() {
@@ -90,8 +90,5 @@ public class Festa {
     }
     public void setNumeroConvidados(int numeroConvidados) {
         this.numeroConvidados = numeroConvidados;
-    }
-    public void setFuncionarios(List<Funcionario> funcionarios) {
-        this.funcionarios = funcionarios;
     }
 }

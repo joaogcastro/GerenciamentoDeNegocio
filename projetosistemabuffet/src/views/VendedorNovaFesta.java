@@ -5,14 +5,14 @@ import models.Cliente;
 import models.Festa;
 import util.Console;
 import util.LocalDateTimeReader;
-import util.ValidadorCPF;
+import util.CPFUtils;
 
 public class VendedorNovaFesta {
     public static void venderFesta (){
         System.out.println("\nNova festa:");
         Cliente cliente = new Cliente();
         cliente.setCpf(Console.readString("Informe o cpf do cliente: "));
-        if(ValidadorCPF.validarCPF(cliente.getCpf())==true){
+        if(CPFUtils.validarCPF(cliente.getCpf())==true){
             if(DataCliente.buscarCPF(cliente)==null){
                 System.out.println("Cliente não cadastrado, ");
                 cliente.setNome(Console.readString("Nome do cliente: "));

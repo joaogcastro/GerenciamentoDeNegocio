@@ -1,6 +1,13 @@
 package util;
 
-public class ValidadorCPF {
+public class CPFUtils {
+
+    public static String formatarCPF(String cpf) {
+        // Remove os caracteres especiais do CPF
+        String cpfSemCaracteresEspeciais = cpf.replaceAll("[\\.-]", "");
+        return cpfSemCaracteresEspeciais;
+    }
+
     public static boolean validarCPF(String cpf) {
         // Remover pontos e traços do CPF
         cpf = cpf.replaceAll("[^0-9]", "");
