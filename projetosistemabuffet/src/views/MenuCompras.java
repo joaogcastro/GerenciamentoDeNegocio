@@ -18,7 +18,8 @@ public class MenuCompras {
 			opcao = Console.readInt("Escolha a opção.");
 		
 			switch (opcao) {
-                case 1: System.out.println("Lista de Itens em falta:");
+                case 1:
+                MenuComprasFornecedor.crudMenuFornecedor();
                 break;
 
                 case 2: System.out.println("");
