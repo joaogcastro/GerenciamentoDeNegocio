@@ -6,7 +6,17 @@ import javax.persistence.Query;
 import models.Ingrediente;
 
 public class DataEstoque {
-    public static void incluir (Ingrediente ingeredientes){
+    public static boolean incluir (Ingrediente ingeredientes){
+        try{
+			EntityManager manager = EntityManagerFactory.getInstance();
+			manager.getTransaction().begin();
+			manager.persist(ingeredientes);
+			manager.getTransaction().commit();
+			return true;
+		}
+		catch(Exception e){
+			return false;
+		}
 
     }
 

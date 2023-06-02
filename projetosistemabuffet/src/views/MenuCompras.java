@@ -24,7 +24,13 @@ public class MenuCompras {
                 case 2: System.out.println("");
                 break;
 
-                case 3: System.out.println("");
+                case 3: 
+                
+                System.out.println("1 - Alterar fornecedores.");
+                System.out.println("2 - Excluir fornecedores.");
+                System.out.println("3 - Voltar.");
+                        
+
                 break;
 
                 case 4: System.out.println("");

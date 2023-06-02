@@ -16,9 +16,11 @@ public class MenuCozinheiro {
         opc = Console.readInt("Escolha a opção.");
 
         switch (opc){
-            case 1: 
+            case 1:  
 
             case 2:
+
+            case 3:
 
         }
             
