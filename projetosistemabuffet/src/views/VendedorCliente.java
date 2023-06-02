@@ -34,7 +34,7 @@ public class VendedorCliente {
                             String telefoneFormatado = TelefoneUtils.formatarTelefone(cliente.getTelefone());
                             cliente.setTelefone(telefoneFormatado);
                             if(DataCliente.incluir(cliente)==true){
-                                System.out.println("\nCliente cadastrado com sucesso.\n");
+                                System.out.println("\nCliente "+cliente.getNome()+" cadastrado com sucesso.\n");
                             }else{
                                 System.out.println("\nHouve um erro ao adicionar o cliente.");
                             }
@@ -69,7 +69,7 @@ public class VendedorCliente {
                                     cliente.setCpf(cpfFormatado);
                                     alterado=true;
                                 }else{
-                                    System.out.println("\nO cpf digitado não é válido. Cancelando a operação de alteração.");
+                                    System.out.println("\nO cpf digitado não é válido.");
                                 }
                                 break;
                             case 3:

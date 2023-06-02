@@ -3,6 +3,7 @@ package controllers;
 import data.DataLogin;
 import models.Usuario;
 import util.Console;
+import views.MenuCompras;
 import views.MenuCozinheiro;
 import views.MenuGerente;
 import views.MenuMaster;
@@ -16,7 +17,7 @@ public class Login {
 			usuario.setUsuario(Console.readString("Usuario: "));
             usuario.setSenha(Console.readString("Senha: "));
 			if(DataLogin.autenticarLogin(usuario)==true) {
-				usuario = DataLogin.retornarUsuario(usuario);
+				usuario = DataLogin.buscarUsuario(usuario);
 				System.out.println("Login realizado com sucesso");
 				logado=true;
                 switch (usuario.getCargo()) {
@@ -31,6 +32,9 @@ public class Login {
 						break;
 					case "master":
 						MenuMaster.exibirMenuMaster();
+						break;
+					case "compras":
+						MenuCompras.exibirMenuCompras();
 						break;
 					default:
 						System.out.println("Cargo desconhecido.");

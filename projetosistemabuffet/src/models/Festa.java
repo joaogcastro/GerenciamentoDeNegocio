@@ -1,14 +1,12 @@
 package models;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -20,14 +18,14 @@ public class Festa {
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;
     private int numeroConvidados;
-    @ManyToOne
+    @OneToOne
     private Cliente cliente;
     @OneToOne
     private Decoracao decoracao;
     @OneToOne
     private Cardapio cardapio;
-    @OneToMany
-    private List<Funcionario> funcionarios = new ArrayList<Funcionario>();
+    @OneToMany (cascade = CascadeType.PERSIST)
+    private List<Funcionario> funcionarios;
     private double valorFesta;
     private boolean pagamentoRealizado;
 
