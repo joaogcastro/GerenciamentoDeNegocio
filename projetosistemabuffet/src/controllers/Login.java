@@ -1,8 +1,9 @@
 package controllers;
 
-import data.LoginData;
+import data.DataLogin;
 import models.Usuario;
 import util.Console;
+import views.MenuCompras;
 import views.MenuCozinheiro;
 import views.MenuGerente;
 import views.MenuMaster;
@@ -15,8 +16,8 @@ public class Login {
 			Usuario usuario= new Usuario();
 			usuario.setUsuario(Console.readString("Usuario: "));
             usuario.setSenha(Console.readString("Senha: "));
-			if(LoginData.autenticarLogin(usuario)==true) {
-				usuario = LoginData.retornarUsuario(usuario);
+			if(DataLogin.autenticarLogin(usuario)==true) {
+				usuario = DataLogin.buscarUsuario(usuario);
 				System.out.println("Login realizado com sucesso");
 				logado=true;
                 switch (usuario.getCargo()) {
@@ -32,12 +33,15 @@ public class Login {
 					case "master":
 						MenuMaster.exibirMenuMaster();
 						break;
+					case "compras":
+						MenuCompras.exibirMenuCompras();
+						break;
 					default:
 						System.out.println("Cargo desconhecido.");
 						break;
 				}
 			}else {
-				System.out.println("Usuario incorreto.");
+				System.out.println("Usuario ou senha incorretos.");
 			}
 		}while(logado==false);
 

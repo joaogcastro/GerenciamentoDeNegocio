@@ -5,7 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import models.Usuario;
 
-public class LoginData {
+public class DataLogin {
     
     public static boolean incluir(Usuario usuario){
 		try{
@@ -13,26 +13,25 @@ public class LoginData {
 			manager.getTransaction().begin();
 			manager.persist(usuario);
 			manager.getTransaction().commit();
-			return true;			
+			return true;
 		}
 		catch(Exception e){
 			return false;
 		}
 	}
 
-    public static boolean alterar(Usuario usuario){
-		try{
+    public static boolean alterar(Usuario usuario) {
+		try {
 			EntityManager manager = EntityManagerFactory.getInstance();
 			manager.getTransaction().begin();
-			manager.persist(usuario);
+			manager.merge(usuario);
 			manager.getTransaction().commit();
-			return true;			
-		}
-		catch(Exception e){
+			return true;
+		} catch (Exception e) {
 			return false;
 		}
 	}
-
+	
     public static boolean excluir(Usuario usuario){
 		try{
 			EntityManager manager = EntityManagerFactory.getInstance();
@@ -40,7 +39,6 @@ public class LoginData {
 			manager.remove(usuario);
 			manager.getTransaction().commit();
 			return true;			
-			
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -48,7 +46,7 @@ public class LoginData {
 		}
 	}
 
-	public static Usuario procurarID(Usuario usuario){
+	public static Usuario buscarID(Usuario usuario){
 		EntityManager manager = EntityManagerFactory.getInstance();
 		Query consulta = manager.createQuery("from Usuario where id = :param");
 		consulta.setParameter("param", usuario.getId());
@@ -61,22 +59,7 @@ public class LoginData {
         return null;
 	}
 
-    public static boolean autenticarLogin(Usuario usuario){
-		EntityManager manager = EntityManagerFactory.getInstance();
-		Query consulta = manager.createQuery("from Usuario where usuario = :param");
-		consulta.setParameter("param", usuario.getUsuario());
-		List<Usuario> usuarios = consulta.getResultList();
-		for(Usuario item: usuarios){
-            if(item.getUsuario().equalsIgnoreCase(usuario.getUsuario())){
-				if(item.getSenha().equals(usuario.getSenha())){
-					return true;
-				}
-            }
-        }
-        return false;
-	}
-
-	public static Usuario retornarUsuario(Usuario usuario){
+	public static Usuario buscarUsuario(Usuario usuario){
 		EntityManager manager = EntityManagerFactory.getInstance();
 		Query consulta = manager.createQuery("from Usuario where usuario = :param");
 		consulta.setParameter("param", usuario.getUsuario());
@@ -89,12 +72,40 @@ public class LoginData {
         return null;
 	}
 
-	public static void listarUsuario(){
+	public static Usuario buscarUsuario(String usuario){
 		EntityManager manager = EntityManagerFactory.getInstance();
-		Query consulta = manager.createQuery("* from Usuario");
+		Query consulta = manager.createQuery("from Usuario where usuario = :param");
+		consulta.setParameter("param", usuario);
 		List<Usuario> usuarios = consulta.getResultList();
 		for(Usuario item: usuarios){
-			System.out.println("\nId: "+item.getId()+"    Cargo: "+item.getCargo()+"Usuario: "+item.getUsuario()+"    Senha: "+item.getSenha());
+            if(item.getUsuario().equals(usuario)){
+                return item;
+            }
+        }
+        return null;
+	}
+
+	public static void listarUsuario() {
+		EntityManager manager = EntityManagerFactory.getInstance();
+		Query consulta = manager.createQuery("select u from Usuario u");
+		List<Usuario> usuarios = consulta.getResultList();
+		for (Usuario item : usuarios) {
+			System.out.println("Id: " + item.getId() + "    Cargo: " + item.getCargo() + "    Usuario: " + item.getUsuario() + "    Senha: " + item.getSenha());
 		}
+	}
+	
+	public static boolean autenticarLogin(Usuario usuario){
+		EntityManager manager = EntityManagerFactory.getInstance();
+		Query consulta = manager.createQuery("from Usuario where usuario = :param");
+		consulta.setParameter("param", usuario.getUsuario());
+		List<Usuario> usuarios = consulta.getResultList();
+		for(Usuario item: usuarios){
+            if(item.getUsuario().equalsIgnoreCase(usuario.getUsuario())){
+				if(item.getSenha().equals(usuario.getSenha())){
+					return true;
+				}
+            }
+        }
+        return false;
 	}
 }

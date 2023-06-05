@@ -6,7 +6,7 @@ public class MenuCompras {
     
     public static void exibirMenuCompras(){
         int opcao;
-        System.out.println("Menu Compras.");
+        System.out.println("\n\nMenu Compras.");
         do {
 			
 			System.out.println("1 - Fazer lista de itens em falta.");
@@ -18,13 +18,20 @@ public class MenuCompras {
 			opcao = Console.readInt("Escolha a opção.");
 		
 			switch (opcao) {
-                case 1: System.out.println("Lista de Itens em falta:");
+                case 1:
+                MenuComprasFornecedor.crudMenuFornecedor();
                 break;
 
                 case 2: System.out.println("");
                 break;
 
-                case 3: System.out.println("");
+                case 3: 
+                
+                System.out.println("1 - Alterar fornecedores.");
+                System.out.println("2 - Excluir fornecedores.");
+                System.out.println("3 - Voltar.");
+                        
+
                 break;
 
                 case 4: System.out.println("");
