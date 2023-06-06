@@ -1,6 +1,7 @@
 package views;
 
 import data.DataFornecedor;
+import data.DataLogin;
 import models.Fornecedor;
 import util.CNPJUtils;
 import util.Console;
@@ -13,7 +14,12 @@ public class MenuComprasFornecedor {
         Fornecedor fornecedor;
         int opc;
         do{
-            System.out.println("/nAlterar dados dos fornecedores:/n1 - Listar fornecedores./n2 - Alterar fornecedores./n3 - excluir fornecedores./n4 - Voltar.");
+            System.out.println("/nAlterar dados dos fornecedores:");
+            System.out.println("1 - Listar fornecedores.");
+            System.out.println("2 - Alterar fornecedores.");
+            System.out.println("3 - excluir fornecedores.");
+            System.out.println("4 - Sair.");
+
             opc=Console.readInt("Informe a opção.");
             switch(opc){
                 case 1:
@@ -36,10 +42,12 @@ public class MenuComprasFornecedor {
                         opcAlterar = Console.readInt("Informe a opção: ");
                         switch(opcAlterar){
                             case 1:
+                            
                                 fornecedor.setNome(Console.readString("Informe o novo nome para este fornecedor: "));
                                 alterado=true;
                                 break;
                             case 2:
+
                                 String novoCnpj=(Console.readString("Informe o novo cnpj para este cliente: "));
                                 if(CNPJUtils.validarCNPJ(fornecedor.getCnpj())==true){
                                     if (DataFornecedor.buscarCNPJ(novoCnpj)==null){
@@ -54,6 +62,7 @@ public class MenuComprasFornecedor {
                                 }
                                 break;
                             case 3:
+
                                 fornecedor.setTelefone(Console.readString("Informe o novo telefone para este fornecedor: "));
                                 String telefoneFormatado = TelefoneUtils.formatarTelefone(fornecedor.getTelefone());
                                 fornecedor.setTelefone(telefoneFormatado);
@@ -82,12 +91,29 @@ public class MenuComprasFornecedor {
 
 
                 case 3:
+                    System.out.println("\nExcluir credencial de login: ");
+                    fornecedor = new Fornecedor();
+                    fornecedor.setId(Console.readInt("Id do fornecedor que será excluído: "));
+                    fornecedor=DataFornecedor.buscarCNPJ(fornecedor);
+                    //FAZER ID FORNECEDOR//
+
+                    if(fornecedor!=null){
+                        if(DataFornecedor.excluir(fornecedor)==true){
+                            System.out.println("\nUsuário "+fornecedor.getNome()+" excluído com sucesso.");
+                        }else{
+                            System.out.println("\nHouve um erro ao excluir o usuário.");
+                        }
+                    }else{
+                        System.out.println("\nEste usuário não existe no banco de dados.");
+                    }
+                    break;
 
 
-                case 4:
+                case 4:System.out.println("saindo.");
+                break;
             }
 
-        }while (opc != 3);
+        }while (opc != 4);
 
     }
     
