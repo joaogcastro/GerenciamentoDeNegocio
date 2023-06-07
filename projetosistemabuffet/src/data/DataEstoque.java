@@ -3,6 +3,8 @@ package data;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
+import models.Fornecedor;
 import models.Ingrediente;
 
 public class DataEstoque {
@@ -66,5 +68,19 @@ public class DataEstoque {
             return false;
         }
     }
+
+    public static Fornecedor buscarID(Fornecedor fornecedor){
+		EntityManager manager = EntityManagerFactory.getInstance();
+		Query consulta = manager.createQuery("from Fornecedor where id = :param");
+		consulta.setParameter("param", fornecedor.getId());
+		List<Fornecedor> ids = consulta.getResultList();
+		for(Fornecedor item: ids){
+            if(item.getId()==fornecedor.getId()){
+                return item;
+            }
+        }
+        return null;
+	}
+
 }   
 
