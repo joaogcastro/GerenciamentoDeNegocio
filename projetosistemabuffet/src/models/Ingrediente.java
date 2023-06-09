@@ -16,18 +16,23 @@ public class Ingrediente {
     public int getQuantidade() {
         return quantidade;
     }
+
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
     public int getIdIngrediente() {
         return idIngrediente;
     }
+
     public void setIdIngrediente(int idIngrediente) {
         this.idIngrediente = idIngrediente;
     }
+
     public String getNomeIngrediente() {
         return nomeIngrediente;
     }
+
     public void setNomeIngrediente(String nomeIngrediente) {
         this.nomeIngrediente = nomeIngrediente;
     }

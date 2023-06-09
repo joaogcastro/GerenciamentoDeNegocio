@@ -23,48 +23,63 @@ public class Funcionario {
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public String getCpf() {
         return cpf;
     }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public String getTelefone() {
         return telefone;
     }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
     public String getFuncao() {
         return funcao;
     }
+
     public void setFuncao(String funcao) {
         this.funcao = funcao;
     }
+
     public boolean isClt() {
         return clt;
     }
+
     public void setClt(boolean clt) {
         this.clt = clt;
     }
+
     public boolean isMonitor() {
         return monitor;
     }
+
     public void setMonitor(boolean monitor) {
         this.monitor = monitor;
     }
+
     public boolean isGarcom() {
         return garcom;
     }
+
     public void setGarcom(boolean garcom) {
         this.garcom = garcom;
     }

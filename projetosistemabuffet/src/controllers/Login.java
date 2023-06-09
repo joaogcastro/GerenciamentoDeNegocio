@@ -10,17 +10,17 @@ import views.MenuMaster;
 import views.MenuVendedor;
 
 public class Login {
-    public static void fazerLogin() {
-		boolean logado=false;
+	public static void fazerLogin() {
+		boolean logado = false;
 		do {
-			Usuario usuario= new Usuario();
-			usuario.setUsuario(Console.readString("Usuario: "));
-            usuario.setSenha(Console.readString("Senha: "));
-			if(DataLogin.autenticarLogin(usuario)==true) {
+			Usuario usuario = new Usuario();
+			usuario.setUsuario(Console.readString("\nUsuario: "));
+			usuario.setSenha(Console.readString("Senha: "));
+			if (DataLogin.autenticarLogin(usuario) == true) {
 				usuario = DataLogin.buscarUsuario(usuario);
 				System.out.println("Login realizado com sucesso");
-				logado=true;
-                switch (usuario.getCargo()) {
+				logado = true;
+				switch (usuario.getCargo()) {
 					case "vendedor":
 						MenuVendedor.exibirMenuVendedor();
 						break;
@@ -28,7 +28,7 @@ public class Login {
 						MenuCozinheiro.exibirMenuCozinheiro();
 						break;
 					case "gerente":
-						MenuGerente.exibirMenuGerente(usuario);
+						MenuGerente.exibirMenuGerente();
 						break;
 					case "master":
 						MenuMaster.exibirMenuMaster();
@@ -40,10 +40,10 @@ public class Login {
 						System.out.println("Cargo desconhecido.");
 						break;
 				}
-			}else {
+			} else {
 				System.out.println("Usuario ou senha incorretos.");
 			}
-		}while(logado==false);
+		} while (logado == false);
 
 	}
 }

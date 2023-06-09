@@ -27,9 +27,10 @@ public class CozinheiroEstoque {
                     Ingrediente objIngrediente = new Ingrediente();
                     objIngrediente.setIdIngrediente(Console.readInt("Id do item que será alterado: "));
                     objIngrediente = DataEstoque.procurarID(objIngrediente);
-                    System.out.println("Nome: " + objIngrediente.getNomeIngrediente() + "  Quantidade: " + objIngrediente.getQuantidade());
+                    System.out.println("Nome: " + objIngrediente.getNomeIngrediente() + "  Quantidade: "
+                            + objIngrediente.getQuantidade());
                     int qntItem = Console.readInt("Quantidade que será retirada do estoque: ");
-                    
+
                     break;
             }
         } while (opc != 3);

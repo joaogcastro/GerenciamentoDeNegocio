@@ -24,7 +24,7 @@ public class Festa {
     private Decoracao decoracao;
     @OneToOne
     private Cardapio cardapio;
-    @OneToMany (cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<Funcionario> funcionarios;
     private double valorFesta;
     private boolean pagamentoRealizado;
@@ -32,60 +32,79 @@ public class Festa {
     public int getIdFesta() {
         return idFesta;
     }
+
     public void setIdFesta(int idFesta) {
         this.idFesta = idFesta;
     }
+
     public LocalDateTime getDataInicio() {
         return dataInicio;
     }
+
     public void setDataInicio(LocalDateTime dataInicio) {
         this.dataInicio = dataInicio;
     }
+
     public LocalDateTime getDataFim() {
         return dataFim;
     }
+
     public void setDataFim(LocalDateTime dataFim) {
         this.dataFim = dataFim;
     }
+
     public Cliente getCliente() {
         return cliente;
     }
+
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
     public Decoracao getDecoracao() {
         return decoracao;
     }
+
     public void setDecoracao(Decoracao decoracao) {
         this.decoracao = decoracao;
     }
+
     public Cardapio getCardapio() {
         return cardapio;
     }
+
     public void setCardapio(Cardapio cardapio) {
         this.cardapio = cardapio;
     }
+
     public List<Funcionario> getFuncionarios() {
         return funcionarios;
     }
+
     public void setFuncionarios(List<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
     }
+
     public double getValorFesta() {
         return valorFesta;
     }
+
     public void setValorFesta(double valorFesta) {
         this.valorFesta = valorFesta;
     }
+
     public boolean isPagamentoRealizado() {
         return pagamentoRealizado;
     }
+
     public void setPagamentoRealizado(boolean pagamentoRealizado) {
         this.pagamentoRealizado = pagamentoRealizado;
     }
+
     public int getNumeroConvidados() {
         return numeroConvidados;
     }
+
     public void setNumeroConvidados(int numeroConvidados) {
         this.numeroConvidados = numeroConvidados;
     }

@@ -1,25 +1,28 @@
 package views;
 
-import models.Usuario;
 import util.Console;
 
 public class MenuGerente {
-    public static void exibirMenuGerente (Usuario usuario){
-        int opc=0;
-        do{
-            System.out.println("\nBem vindo(a) Gerente "+usuario.getUsuario()+" selecione uma das opções do menu: ");
-            System.out.println("1- Lista de funcionários\n2- Festas\n3- Sair");
-            opc= Console.readInt("Informe a opção: ");
 
-            switch(opc){
+    public static void exibirMenuGerente() {
+        int opc;
+        do {
+            System.out.println("\n\nMenu Gerente:");
+            System.out.println("1- Relatório financeiro.");
+            System.out.println("2- Gerenciar funcionários.");
+            System.out.println("3- Acessar funcionalidades dos demais cargos.");
+            System.out.println("4- Sair.");
+            opc = Console.readInt("Informe a opção: ");
+
+            switch (opc) {
                 case 1:
-                    System.out.println("Lista de funcionarios");
+
                     break;
-                
+
                 case 2:
-                    System.out.println("Festas");
+
                     break;
             }
-        }while(opc!=3);
+        } while (opc != 3);
     }
 }
