@@ -1,9 +1,8 @@
 package data;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import models.Fornecedor;
 
@@ -47,23 +46,19 @@ public class DataFornecedor {
 	}
 
 	public static Fornecedor buscarCNPJ(Fornecedor fornecedor) {
-		String cnpjFormatado = fornecedor.getCnpj().replaceAll("[\\.-]", ""); // Remove os caracteres especiais do CPF
-		EntityManager manager = EntityManagerFactory.getInstance();
-		Query consulta = manager.createQuery("from Fornecedor where cnpj = :parametro");
-		consulta.setParameter("parametro", cnpjFormatado);
-		List<Fornecedor> resultados = consulta.getResultList();
-
-		if (!resultados.isEmpty()) {
-			return resultados.get(0);
-		} else {
-			return null;
-		}
+		String cnpjFormatado = fornecedor.getCnpj().replaceAll("[\\.-]", ""); // Remove os caracteres especiais do CNPJ
+		return buscarFornecedorPorCNPJ(cnpjFormatado);
 	}
 
 	public static Fornecedor buscarCNPJ(String cnpj) {
-		String cnpjFormatado = cnpj.replaceAll("[\\.-]", ""); // Remove os caracteres especiais do CPF
+		String cnpjFormatado = cnpj.replaceAll("[\\.-]", ""); // Remove os caracteres especiais do CNPJ
+		return buscarFornecedorPorCNPJ(cnpjFormatado);
+	}
+
+	private static Fornecedor buscarFornecedorPorCNPJ(String cnpjFormatado) {
 		EntityManager manager = EntityManagerFactory.getInstance();
-		Query consulta = manager.createQuery("from Fornecedor where cnpj = :parametro");
+		TypedQuery<Fornecedor> consulta = manager.createQuery("select f from Fornecedor f where f.cnpj = :parametro",
+				Fornecedor.class);
 		consulta.setParameter("parametro", cnpjFormatado);
 		List<Fornecedor> resultados = consulta.getResultList();
 

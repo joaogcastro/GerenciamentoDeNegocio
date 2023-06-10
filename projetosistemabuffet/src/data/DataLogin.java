@@ -2,7 +2,7 @@ package data;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import models.Usuario;
 
 public class DataLogin {
@@ -46,7 +46,8 @@ public class DataLogin {
 
 	public static Usuario buscarID(Usuario usuario) {
 		EntityManager manager = EntityManagerFactory.getInstance();
-		Query consulta = manager.createQuery("from Usuario where id = :param");
+		TypedQuery<Usuario> consulta = manager.createQuery("select u from Usuario u where u.id = :param",
+				Usuario.class);
 		consulta.setParameter("param", usuario.getId());
 		List<Usuario> ids = consulta.getResultList();
 		for (Usuario item : ids) {
@@ -59,7 +60,8 @@ public class DataLogin {
 
 	public static Usuario buscarUsuario(Usuario usuario) {
 		EntityManager manager = EntityManagerFactory.getInstance();
-		Query consulta = manager.createQuery("from Usuario where usuario = :param");
+		TypedQuery<Usuario> consulta = manager.createQuery("select u from Usuario u where u.usuario = :param",
+				Usuario.class);
 		consulta.setParameter("param", usuario.getUsuario());
 		List<Usuario> usuarios = consulta.getResultList();
 		for (Usuario item : usuarios) {
@@ -72,7 +74,8 @@ public class DataLogin {
 
 	public static Usuario buscarUsuario(String usuario) {
 		EntityManager manager = EntityManagerFactory.getInstance();
-		Query consulta = manager.createQuery("from Usuario where usuario = :param");
+		TypedQuery<Usuario> consulta = manager.createQuery("select u from Usuario u where u.usuario = :param",
+				Usuario.class);
 		consulta.setParameter("param", usuario);
 		List<Usuario> usuarios = consulta.getResultList();
 		for (Usuario item : usuarios) {
@@ -85,7 +88,7 @@ public class DataLogin {
 
 	public static void listarUsuario() {
 		EntityManager manager = EntityManagerFactory.getInstance();
-		Query consulta = manager.createQuery("select u from Usuario u");
+		TypedQuery<Usuario> consulta = manager.createQuery("select u from Usuario u", Usuario.class);
 		List<Usuario> usuarios = consulta.getResultList();
 		for (Usuario item : usuarios) {
 			System.out.println("Id: " + item.getId() + "    Cargo: " + item.getCargo() + "    Usuario: "
@@ -95,7 +98,8 @@ public class DataLogin {
 
 	public static boolean autenticarLogin(Usuario usuario) {
 		EntityManager manager = EntityManagerFactory.getInstance();
-		Query consulta = manager.createQuery("from Usuario where usuario = :param");
+		TypedQuery<Usuario> consulta = manager.createQuery("select u from Usuario u where u.usuario = :param",
+				Usuario.class);
 		consulta.setParameter("param", usuario.getUsuario());
 		List<Usuario> usuarios = consulta.getResultList();
 		for (Usuario item : usuarios) {

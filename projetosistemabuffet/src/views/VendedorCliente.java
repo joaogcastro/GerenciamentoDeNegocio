@@ -26,7 +26,7 @@ public class VendedorCliente {
                     cliente.setCpf(Console.readString("Informe o cpf do cliente: "));
                     if (CPFUtils.validarCPF(cliente.getCpf()) == true) {
                         if (DataCliente.buscarCPF(cliente) == null) {
-                            cliente.setNome(Console.readString("Nome do cliente: "));
+                            cliente.setNome(Console.readString("Informe o nome do cliente: "));
                             cliente.setTelefone(Console.readString("Informe o telefone do cliente: "));
                             cliente.setEmail(Console.readString("Informe o email do cliente: "));
                             cliente.setEndereco(Console.readString("Informe o endereço do cliente: "));
@@ -132,6 +132,7 @@ public class VendedorCliente {
 
                 default:
                     System.out.println("\nA opção selecionada não é válida.");
+                    break;
             }
         } while (opc != 5);
     }
@@ -146,13 +147,19 @@ public class VendedorCliente {
                     System.out.println("\nLista de clientes:");
                     DataCliente.listarContatoClientes();
                     break;
+
                 case 2:
                     System.out.println("\nBuscar um cliente por nome:");
                     String nomeCliente = Console.readString("Informe o nome do cliente: ");
                     DataCliente.buscarNomeCliente(nomeCliente);
                     break;
+
                 case 3:
                     System.out.println("\nVoltando ao menu.\n");
+                    
+                default:
+                    System.out.println("\nA opção selecionada não é válida.");
+                    break;
             }
         } while (opc != 3);
     }

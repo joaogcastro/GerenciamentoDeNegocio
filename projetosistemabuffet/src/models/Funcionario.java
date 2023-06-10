@@ -16,9 +16,11 @@ public class Funcionario {
     private String nome;
     private String telefone;
     private String funcao;
+    private double salario;
     private boolean clt;
     private boolean monitor;
     private boolean garcom;
+    private double valorHora;
 
     public int getId() {
         return id;
@@ -82,5 +84,21 @@ public class Funcionario {
 
     public void setGarcom(boolean garcom) {
         this.garcom = garcom;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public double getValorHora() {
+        return valorHora;
+    }
+
+    public void setValorHora(double valorHora) {
+        this.valorHora = valorHora;
     }
 }

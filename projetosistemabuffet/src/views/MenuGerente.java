@@ -16,21 +16,25 @@ public class MenuGerente {
 
             switch (opc) {
                 case 1:
-
+                    GerenteFinancas.exibirRelatorioFinanceiro();
                     break;
+
                 case 2:
-
+                    GerenteFuncionario.crudFuncionario();
                     break;
+
                 case 3:
                     GerenteCargos.escolherMenu();
                     break;
-                case 4:
 
+                case 4:
+                    System.out.println("Fazendo logoff.");
                     break;
+
                 default:
                     System.out.println("Esta opção não é válida.");
                     break;
             }
-        } while (opc != 3);
+        } while (opc != 4);
     }
 }

@@ -1,10 +1,8 @@
 package data;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
+import javax.persistence.TypedQuery;
 import models.Usuario;
 
 public class IniciarODB {
@@ -23,12 +21,10 @@ public class IniciarODB {
 
     public static boolean verificarDBIniciado() {
         EntityManager manager = EntityManagerFactory.getInstance();
-        Query consulta = manager.createQuery("from Usuario where cargo = 'master'");
+        TypedQuery<Usuario> consulta = manager.createQuery("select u from Usuario u where u.cargo = 'master'",
+                Usuario.class);
         List<Usuario> usuarioMaster = consulta.getResultList();
-        if (usuarioMaster.isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return !usuarioMaster.isEmpty();
     }
+
 }
