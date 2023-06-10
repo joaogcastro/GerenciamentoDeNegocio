@@ -7,6 +7,7 @@ import util.TelefoneUtils;
 import util.CPFUtils;
 
 public class VendedorCliente {
+    
     public static void crudCliente() {
         Cliente cliente;
         int opc;

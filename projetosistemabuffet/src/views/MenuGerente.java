@@ -18,9 +18,17 @@ public class MenuGerente {
                 case 1:
 
                     break;
-
                 case 2:
 
+                    break;
+                case 3:
+                    GerenteCargos.escolherMenu();
+                    break;
+                case 4:
+
+                    break;
+                default:
+                    System.out.println("Esta opção não é válida.");
                     break;
             }
         } while (opc != 3);

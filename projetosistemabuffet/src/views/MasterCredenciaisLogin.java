@@ -5,6 +5,7 @@ import models.Usuario;
 import util.Console;
 
 public class MasterCredenciaisLogin {
+    
     public static void crudCredenciaisLogin() {
         int opc;
         Usuario usuario;

@@ -8,6 +8,7 @@ import util.LocalDateTimeReader;
 import util.CPFUtils;
 
 public class VendedorFesta {
+    
     public static void venderFesta() {
         System.out.println("\nNova festa:");
         Cliente cliente = new Cliente();
