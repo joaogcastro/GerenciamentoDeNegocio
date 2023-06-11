@@ -1,5 +1,7 @@
 package views;
 
+import data.DataEstoque;
+import models.Ingrediente;
 import util.Console;
 
 public class MenuCozinheiro {
@@ -16,11 +18,36 @@ public class MenuCozinheiro {
 
             switch (opc) {
                 case 1:
+                    System.out.println("\nConsultar Estoque:");
+                    DataEstoque.listarIngredientes();
+                    break;
 
                 case 2:
+                    System.out.println("\nDar baixa em itens utilizados.");
+                    int idItem = Console.readInt("Informe o ID do item utilizado: ");
+                    int quantidade = Console.readInt("Informe a quantidade utilizada: ");
+                    Ingrediente ingrediente = new Ingrediente();
+                    ingrediente.setIdIngrediente(idItem);
+                    Ingrediente itemEncontrado = DataEstoque.procurarID(ingrediente);
+                    if (itemEncontrado != null) {
+                        DataEstoque.baixaItens(itemEncontrado, quantidade);
+                    } else {
+                        System.out.println("Item não encontrado no estoque.");
+                    }
+                    break;
 
                 case 3:
+                    System.out.println("\nGerenciar Cardápio:");
+                    CozinheiroCardapio.gerenciarCardapio();
+                    break;
 
+                case 4:
+                    System.out.println("Saindo...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida.");
+                    break;
             }
 
         } while (opc != 4);

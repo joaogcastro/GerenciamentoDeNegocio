@@ -68,7 +68,10 @@ public class VendedorCliente {
                             case 2:
                                 cliente.setCpf(Console.readString("Informe o novo cpf para este cliente: "));
                                 if (CPFUtils.validarCPF(cliente.getCpf()) == true) {
-                                    String cpfFormatado = CPFUtils.formatarCPF(cliente.getCpf());
+                                 
+                                cliente.setTelefone(Console.readString("Informe o novo telefone para este cliente: "));
+                                String telefoneFormatado = TelefoneUtils.formatarTelefone(cliente.getTelefone());
+                                cliente.setTelefone(telefoneFormatado);   String cpfFormatado = CPFUtils.formatarCPF(cliente.getCpf());
                                     cliente.setCpf(cpfFormatado);
                                     alterado = true;
                                 } else {
@@ -76,9 +79,6 @@ public class VendedorCliente {
                                 }
                                 break;
                             case 3:
-                                cliente.setTelefone(Console.readString("Informe o novo telefone para este cliente: "));
-                                String telefoneFormatado = TelefoneUtils.formatarTelefone(cliente.getTelefone());
-                                cliente.setTelefone(telefoneFormatado);
                                 alterado = true;
                                 break;
                             case 4:

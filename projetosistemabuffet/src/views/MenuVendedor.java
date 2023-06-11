@@ -22,17 +22,21 @@ public class MenuVendedor {
                     VendedorFesta.venderFesta();
                     break;
                 case 2:
-                    VendedorCliente.contatarClientes();
-                    break;
+                    
                 case 3:
-                    VendedorCliente.crudCliente();
-                    break;
+                    
                 case 4:
 
                 case 5:
+                    VendedorCliente.contatarClientes();
+                    break;
 
                 case 6:
+                    VendedorCliente.crudCliente();
+                    break;
 
+                case 7:
+                    System.out.println("");
             }
 
         } while (opc != 7);
