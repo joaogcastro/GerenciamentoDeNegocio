@@ -71,7 +71,7 @@ public class MenuCompras {
                     break;
 
                 case 3:
-                    // TODO: Implementar o gerenciamento de decorações
+                    ComprasDecoracao.gerenciarDecoracao();
                     break;
 
                 case 4:
