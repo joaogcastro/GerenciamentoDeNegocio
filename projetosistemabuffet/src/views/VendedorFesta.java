@@ -1,6 +1,13 @@
 package views;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import data.DataCliente;
+import data.EntityManagerFactory;
+import javassist.bytecode.stackmap.BasicBlock.Catch;
 import models.Cliente;
 import models.Festa;
 import util.Console;
@@ -30,15 +37,35 @@ public class VendedorFesta {
             festa.setDataFim(
                     LocalDateTimeReader.readLocalDateTime("Informe a data do fim (no formato dd/MM/yyyy HH:mm): "));
 
-            // VERIFICAR SE NÃO HÁ NENHUMA FESTA NO HORARIO
+            if (verificarConflitoHorario(festa)) {
+                System.out.println("O horário selecionado não está disponível. Por favor, escolha outro horário.");
+                return;
+            }
 
             festa.setNumeroConvidados(Console.readInt("Informe o número de convidados para a festa: "));
             festa.setDecoracao(null);
             festa.setCardapio(null);
             // Boa pergunta festa.setFuncionarios(null);
             // AUTOMATICO festa.setValorFesta(0);
+       
         } else {
             System.out.println("Esse cpf não é válido.");
+        }
+    }
+
+    private static boolean verificarConflitoHorario(Festa festa) {
+        try {
+            EntityManager manager = EntityManagerFactory.getInstance();
+            TypedQuery<Festa> query = manager.createQuery(
+                "SELECT f FROM Festa f WHERE f.horaInicio < :horaTermino AND f.horaTermino > :horaInicio", Festa.class);
+            query.setParameter("horaTermino", festa.getDataFim());
+            query.setParameter("horaInicio", festa.getDataInicio());
+            List<Festa> festas = query.getResultList();
+
+            return !festas.isEmpty();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true; // Se ocorrer um erro na consulta, considere como conflito de horário
         }
     }
 }
