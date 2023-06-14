@@ -67,18 +67,21 @@ public class DataFuncionario {
         List<Funcionario> funcionarios = consulta.getResultList();
         for (Funcionario item : funcionarios) {
             System.out.println("Id: " + item.getId() + "   CPF: " + item.getCpf() + "   Nome: " + item.getNome()
-                    + "   Telefone: " + item.getTelefone() + "   Função: " + item.getFuncao()+"   Salário: "+item.getSalario());
+                    + "   Telefone: " + item.getTelefone() + "   Função: " + item.getFuncao() + "   Salário: "
+                    + item.getSalario());
         }
     }
 
     public static void listarFuncionariosCLT() {
         EntityManager manager = EntityManagerFactory.getInstance();
-        TypedQuery<Funcionario> consulta = manager.createQuery("select f from Funcionario f where f.CLT = true", Funcionario.class);
+        TypedQuery<Funcionario> consulta = manager.createQuery("select f from Funcionario f where f.clt = true",
+                Funcionario.class);
         List<Funcionario> funcionarios = consulta.getResultList();
         if (!funcionarios.isEmpty()) {
             for (Funcionario item : funcionarios) {
-                System.out.println("Id: " + item.getId() + "   CPF: " + item.getCpf() + "   Nome: " + item.getNome()+"   Telefone: "+item.getTelefone()
-                        + "\n Função: " + item.getFuncao()+"   Salário: "+item.getSalario()+ "\n Garçom: " + item.isGarcom()+"   Monitor: "+item.isMonitor()+"   Valor da hora: "+item.getValorHora());
+                System.out.println("Id: " + item.getId() + "   CPF: " + item.getCpf() + "   Nome: " + item.getNome()
+                        + "   Telefone: " + item.getTelefone()
+                        + "\n Função: " + item.getFuncao() + "   Salário: " + item.getSalario());
             }
         } else {
             System.out.println("Não há funcionários cadastrados no banco.");
@@ -87,12 +90,15 @@ public class DataFuncionario {
 
     public static void listarFuncionariosTaxa() {
         EntityManager manager = EntityManagerFactory.getInstance();
-        TypedQuery<Funcionario> consulta = manager.createQuery("select f from Funcionario f where f.CLT = false", Funcionario.class);
+        TypedQuery<Funcionario> consulta = manager.createQuery("select f from Funcionario f where f.clt = false",
+                Funcionario.class);
         List<Funcionario> funcionarios = consulta.getResultList();
         if (!funcionarios.isEmpty()) {
             for (Funcionario item : funcionarios) {
-                System.out.println("Id: " + item.getId() + "   CPF: " + item.getCpf() + "   Nome: " + item.getNome()+"   Telefone: "+item.getTelefone()
-                        + "   Garçom: " + item.isGarcom()+"   Monitor: "+item.isMonitor()+"   Valor da hora: "+item.getValorHora());
+                System.out.println("Id: " + item.getId() + "   CPF: " + item.getCpf() + "   Nome: " + item.getNome()
+                        + "   Telefone: " + item.getTelefone()
+                        + "   Garçom: " + item.isGarcom() + "   Monitor: " + item.isMonitor() + "   Valor da hora: "
+                        + item.getValorHora());
             }
         } else {
             System.out.println("Não há funcionários cadastrados no banco.");

@@ -5,10 +5,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-
 import data.DataCardapio;
 import data.DataCliente;
 import data.DataDecoracao;
@@ -97,7 +95,7 @@ public class VendedorFesta {
     }
 
     private static void cadastrarCliente(Cliente cliente) {
-        System.out.println("Cliente não cadastrado, ");
+        System.out.println("Cliente não cadastrado, vamos cadastrá-lo:");
         cliente.setNome(Console.readString("Nome do cliente: "));
         cliente.setTelefone(Console.readString("Informe o telefone do cliente: "));
         cliente.setEmail(Console.readString("Informe o email do cliente: "));
