@@ -1,15 +1,18 @@
 package views;
 
 import models.Decoracao;
+import models.Fornecedor;
 import data.DataDecoracao;
+import data.DataFornecedor;
 import util.Console;
 
 public class ComprasDecoracao {
 
     public static void gerenciarDecoracao() {
+        Decoracao decoracao;
         int opcDecoracao;
         do {
-            System.out.println("\nMenu Gerenciar Decorações:");
+            System.out.println("\nGerenciar Decorações:");
             System.out.println("1- Listar decorações.");
             System.out.println("2- Adicionar decoração.");
             System.out.println("3- Alterar decoração.");
@@ -25,14 +28,22 @@ public class ComprasDecoracao {
 
                 case 2:
                     System.out.println("\nAdicionar decoração:");
-                    String tema = Console.readString("Informe o tema da decoração: ");
-                    double preco = Console.readDouble("Informe o preço da decoração: ");
+                    decoracao = new Decoracao();
+                    decoracao.setTema(Console.readString("Informe o tema da decoração: "));
+                    decoracao.setPreco(Console.readDouble("Informe o preço da decoração: "));
+                    System.out.println("Informe o fornecedor dessa decoração: ");
+                    DataFornecedor.listarFornecedores();
+                    Fornecedor fornecedor = new Fornecedor();
+                    do{
+                        fornecedor= DataFornecedor.buscarFornecedorPorId(Console.readInt("Informe o id do fornecedor: "));
+                        if(fornecedor==null){
+                            System.out.println("Este id não corresponde a nenhum fornecedor.");
+                        }
+                    }while(fornecedor==null);
 
-                    Decoracao novaDecoracao = new Decoracao();
-                    novaDecoracao.setTema(tema);
-                    novaDecoracao.setPreco(preco);
+                    decoracao.setFornecedor(fornecedor);
 
-                    if (DataDecoracao.incluir(novaDecoracao)) {
+                    if (DataDecoracao.incluir(decoracao)) {
                         System.out.println("Decoração adicionada com sucesso.");
                     } else {
                         System.out.println("Erro ao adicionar decoração.");
@@ -42,14 +53,11 @@ public class ComprasDecoracao {
                 case 3:
                     System.out.println("\nAlterar decoração:");
                     int id = Console.readInt("Informe o ID da decoração a ser alterada: ");
-                    Decoracao decoracao = DataDecoracao.buscarDecoracaoPorId(id);
+                    decoracao = DataDecoracao.buscarDecoracaoPorId(id);
 
                     if (decoracao != null) {
-                        String temaAlterar = Console.readString("Informe o novo tema da decoração: ");
-                        double precoAlterar = Console.readDouble("Informe o novo preço da decoração: ");
-
-                        decoracao.setTema(temaAlterar);
-                        decoracao.setPreco(precoAlterar);
+                        decoracao.setTema(Console.readString("Informe o novo tema da decoração: "));
+                        decoracao.setPreco(Console.readDouble("Informe o novo preço da decoração: "));
 
                         if (DataDecoracao.alterar(decoracao)) {
                             System.out.println("Decoração alterada com sucesso.");
@@ -63,11 +71,10 @@ public class ComprasDecoracao {
 
                 case 4:
                     System.out.println("\nRemover decoração:");
-                    int idRemover = Console.readInt("Informe o ID da decoração a ser removida: ");
-                    Decoracao decoracaoRemover = DataDecoracao.buscarDecoracaoPorId(idRemover);
+                    decoracao = DataDecoracao.buscarDecoracaoPorId(Console.readInt("Informe o ID da decoração a ser removida: "));
 
-                    if (decoracaoRemover != null) {
-                        if (DataDecoracao.excluir(decoracaoRemover)) {
+                    if (decoracao != null) {
+                        if (DataDecoracao.excluir(decoracao)) {
                             System.out.println("Decoração removida com sucesso.");
                         } else {
                             System.out.println("Erro ao remover decoração.");

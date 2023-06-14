@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Decoracao {
@@ -12,6 +13,8 @@ public class Decoracao {
     private int id;
     private String tema;
     private double preco;
+    @OneToOne
+    private Fornecedor fornecedor;
 
     public int getId() {
         return id;
@@ -35,5 +38,13 @@ public class Decoracao {
 
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
     }
 }

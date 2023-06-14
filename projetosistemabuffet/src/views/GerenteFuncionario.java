@@ -36,14 +36,18 @@ public class GerenteFuncionario {
                     funcionario.setCpf(Console.readString("Informe o CPF do funcionário: "));
                     if (CPFUtils.validarCPF(funcionario.getCpf()) == true) {
                         if (DataFuncionario.buscarCPF(funcionario) == null) {
+
                             funcionario.setNome(Console.readString("Informe o nome do funcionário: "));
                             funcionario.setTelefone(Console.readString("Informe o telefone do funcionário: "));
+
                             System.out.println("O funcionário será CLT?");
                             funcionario.setClt(BooleanUtils.formatarSimNao());
                             if (funcionario.isClt()) {
+
                                 funcionario.setFuncao(Console.readString("Informe a função do funcionário: "));
                                 funcionario.setSalario(
                                         Console.readDouble("Informe o salário combinado para este funcionário: R$"));
+
                             } else {
                                 System.out.println("O funcionário é garçom ?");
                                 funcionario.setGarcom(BooleanUtils.formatarSimNao());
@@ -52,21 +56,24 @@ public class GerenteFuncionario {
                                 funcionario.setValorHora(
                                         Console.readDouble("Informe o valor da hora desse funcionário: "));
                             }
-                            // Formatando no padrão do banco
+
+                            // Formatando no padrao do banco
                             String cpfFormatado = CPFUtils.formatarCPF(funcionario.getCpf());
                             funcionario.setCpf(cpfFormatado);
                             String telefoneFormatado = TelefoneUtils.formatarTelefone(funcionario.getTelefone());
                             funcionario.setTelefone(telefoneFormatado);
-                            // Adicionando ao banco
+
                             if (DataFuncionario.incluir(funcionario)) {
                                 System.out.println(
                                         "\nFuncionario " + funcionario.getNome() + " cadastrado com sucesso.\n");
                             } else {
                                 System.out.println("\nHouve um erro ao adicionar o funcionário.");
                             }
+
                         } else {
                             System.out.println("\nEsse funcionário já está cadastrado no banco de dados.");
                         }
+
                     } else {
                         System.out.println("\nO CPF digitado não é válido");
                     }
@@ -77,6 +84,7 @@ public class GerenteFuncionario {
                     funcionario = new Funcionario();
                     opcAlterar = 0;
                     alterado = false;
+                    
                     funcionario.setCpf(Console.readString("Informe o cpf do funcionário que será alterado: "));
                     funcionario = DataFuncionario.buscarCPF(funcionario);
                     if (funcionario != null) {

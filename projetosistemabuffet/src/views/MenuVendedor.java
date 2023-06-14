@@ -13,8 +13,8 @@ public class MenuVendedor {
         do {
             System.out.println("\n\nMenu Vendedor:");
             System.out.println("1- Nova festa.");
-            System.out.println("2- Resumo da festa.");
-            System.out.println("3- Calendario de festas.");
+            System.out.println("2- Buscar festas.");
+            System.out.println("3- Resumo da festa.");
             System.out.println("4- Cancelar festa.");
             System.out.println("5- Contato dos clientes.");
             System.out.println("6- Gerenciar cadastro dos clientes.");
@@ -27,17 +27,29 @@ public class MenuVendedor {
                     break;
 
                 case 2:
-                    System.out.println("Detalhes da festa:");
-                    festa = new Festa();
-                    festa.setIdFesta(Console.readInt("Informe o id da festa: "));
-                    festa= 
-                    DataFesta.exibirDetalhesFesta(festa);
+                    System.out.println("\nBuscar festas:");
+                    System.out.println("1- Listar todas as festas.");
+                    System.out.println("2- Buscar festas por cliente");
+                    int opcBuscar = Console.readInt("Informe a opção: ");
+
+                    switch(opcBuscar){
+                        case 1:
+                            System.out.println("\nLista de festas:");
+                            DataFesta.listarFestas();
+                    }
                     
                 case 3:
-                    
-                case 4:
+                    System.out.println("Detalhes da festa:");
+                    festa = new Festa();
+                    festa=DataFesta.buscarFestaPorId(Console.readInt("Informe o id da festa: "));
+                    if(festa!=null){
+                        DataFesta.exibirDetalhesFesta(festa);
+                    }else{
+                        System.out.println("\nEste id não corresponde a nenhuma festa.");
+                    }
+                    break;
 
-                boolean dataOcupada = GerenciadorFestas.verificarDataOcupada(dataInicio, dataFim);
+                case 4:
 
                 case 5:
                     VendedorCliente.contatarClientes();

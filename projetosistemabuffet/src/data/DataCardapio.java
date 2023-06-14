@@ -7,7 +7,7 @@ import models.Cardapio;
 
 public class DataCardapio {
 
-    public static boolean adicionarItemCardapio(Cardapio cardapio) {
+    public static boolean incluir(Cardapio cardapio) {
         try {
             EntityManager manager = EntityManagerFactory.getInstance();
             manager.getTransaction().begin();
@@ -19,7 +19,7 @@ public class DataCardapio {
         }
     }
 
-    public static boolean alterarItemCardapio(Cardapio prato) {
+    public static boolean alterar(Cardapio prato) {
         try {
             EntityManager manager = EntityManagerFactory.getInstance();
             manager.getTransaction().begin();
@@ -31,20 +31,20 @@ public class DataCardapio {
         }
     }
 
-    public static boolean removerItemCardapio(int id) {
+    public static boolean excluir(Cardapio prato) {
         try {
-            EntityManager manager = EntityManagerFactory.getInstance();
-            manager.getTransaction().begin();
-            Cardapio cardapio = manager.find(Cardapio.class, id);
-            manager.remove(cardapio);
-            manager.getTransaction().commit();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+			EntityManager manager = EntityManagerFactory.getInstance();
+			manager.getTransaction().begin();
+			manager.remove(prato);
+			manager.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
     }
 
-    public static void listarItensCardapio() {
+    public static void listarPratosCardapio() {
         EntityManager manager = EntityManagerFactory.getInstance();
         TypedQuery<Cardapio> consulta = manager.createQuery("SELECT c FROM Cardapio c", Cardapio.class);
         List<Cardapio> cardapios = consulta.getResultList();
@@ -55,9 +55,8 @@ public class DataCardapio {
         }
     }
 
-    public static Cardapio buscarItemCardapio(int id) {
+    public static Cardapio buscarPratoCardapio(int id) {
         EntityManager manager = EntityManagerFactory.getInstance();
         return manager.find(Cardapio.class, id);
     }
-
 }

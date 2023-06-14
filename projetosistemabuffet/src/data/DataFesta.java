@@ -66,13 +66,7 @@ public class DataFesta {
             if (!festas.isEmpty()) {
                 System.out.println("Festas cadastradas:");
                 for (Festa festa : festas) {
-                    System.out.println("ID: " + festa.getIdFesta());
-                    System.out.println("Data de início: " + festa.getDataInicio());
-                    System.out.println("Data do fim: " + festa.getDataFim());
-                    System.out.println("Cliente: " + festa.getCliente().getNome());
-                    System.out.println("Número de convidados: " + festa.getNumeroConvidados());
-                    System.out.println("Valor: " + festa.getValorFesta());
-                    System.out.println("\n");
+                    System.out.println("ID: " + festa.getIdFesta()+"   Data: "+festa.getDataInicio()+" a "+festa.getDataFim()+"   Cliente: " + festa.getCliente().getNome());
                 }
             } else {
                 System.out.println("Nenhuma decoração cadastrada.");

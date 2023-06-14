@@ -20,21 +20,25 @@ public class VendedorCliente {
                     System.out.println("\nClientes cadastrados no banco:");
                     DataCliente.listarClientesNoBanco();
                     break;
+
                 case 2:
                     System.out.println("\nAdicionar novo cliente:");
                     cliente = new Cliente();
                     cliente.setCpf(Console.readString("Informe o cpf do cliente: "));
                     if (CPFUtils.validarCPF(cliente.getCpf()) == true) {
                         if (DataCliente.buscarCPF(cliente) == null) {
+
                             cliente.setNome(Console.readString("Informe o nome do cliente: "));
                             cliente.setTelefone(Console.readString("Informe o telefone do cliente: "));
                             cliente.setEmail(Console.readString("Informe o email do cliente: "));
                             cliente.setEndereco(Console.readString("Informe o endereço do cliente: "));
+
                             // Formatando no padrão do banco
                             String cpfFormatado = CPFUtils.formatarCPF(cliente.getCpf());
                             cliente.setCpf(cpfFormatado);
                             String telefoneFormatado = TelefoneUtils.formatarTelefone(cliente.getTelefone());
                             cliente.setTelefone(telefoneFormatado);
+
                             if (DataCliente.incluir(cliente) == true) {
                                 System.out.println("\nCliente " + cliente.getNome() + " cadastrado com sucesso.\n");
                             } else {
@@ -53,9 +57,11 @@ public class VendedorCliente {
                     cliente = new Cliente();
                     int opcAlterar;
                     boolean alterado = false;
+
                     cliente.setCpf(Console.readString("Informe o cpf do cliente que será alterado: "));
                     cliente = DataCliente.buscarCPF(cliente);
                     if (cliente != null) {
+
                         System.out.println("Alterando o cliente " + cliente.getNome());
                         System.out.println(
                                 "1- Alterar nome\n2- Alterar CPF\n3- Alterar telefone\n4- Alterar email\n5- Alterar endereço");
@@ -65,6 +71,7 @@ public class VendedorCliente {
                                 cliente.setNome(Console.readString("Informe o novo nome para este cliente: "));
                                 alterado = true;
                                 break;
+
                             case 2:
                                 cliente.setCpf(Console.readString("Informe o novo cpf para este cliente: "));
                                 if (CPFUtils.validarCPF(cliente.getCpf()) == true) {
@@ -78,18 +85,22 @@ public class VendedorCliente {
                                     System.out.println("\nO cpf digitado não é válido.");
                                 }
                                 break;
+
                             case 3:
                                 alterado = true;
                                 break;
+
                             case 4:
                                 cliente.setEndereco(
                                         Console.readString("Informe o novo endereço de email deste cliente: "));
                                 alterado = true;
                                 break;
+
                             case 5:
                                 cliente.setEndereco(Console.readString("Informe o novo endereço deste cliente: "));
                                 alterado = true;
                                 break;
+
                             default:
                                 System.out.println("Opção não listada, voltando ao menu.");
                                 break;

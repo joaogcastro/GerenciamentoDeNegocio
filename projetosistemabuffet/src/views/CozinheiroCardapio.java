@@ -7,6 +7,7 @@ import util.Console;
 public class CozinheiroCardapio {
 
     public static void gerenciarCardapio() {
+        Cardapio prato;
         int opcCardapio;
         do {
             System.out.println("\nMenu Cardápio:");
@@ -20,33 +21,29 @@ public class CozinheiroCardapio {
             switch (opcCardapio) {
                 case 1:
                     System.out.println("\nListar itens do cardápio:");
-                    DataCardapio.listarItensCardapio();
+                    DataCardapio.listarPratosCardapio();
                     break;
 
                 case 2:
-                    System.out.println("\nAdicionar item ao cardápio:");
-                    String nome = Console.readString("Informe o nome do item: ");
-                    double preco = Console.readDouble("Informe o preço do item: ");
-                    Cardapio novoItem = new Cardapio();
-                    novoItem.setNome(nome);
-                    novoItem.setPreco(preco);
-                    if (DataCardapio.adicionarItemCardapio(novoItem)) {
-                        System.out.println("Item adicionado ao cardápio com sucesso.");
+                    System.out.println("\nAdicionar Prato ao cardápio:");
+                    prato = new Cardapio();
+                    prato.setNome(Console.readString("Informe o nome do Prato: "));
+                    prato.setPreco(Console.readDouble("Informe o preço do Prato: "));
+                    if (DataCardapio.incluir(prato)) {
+                        System.out.println("Prato adicionado ao cardápio com sucesso.");
                     } else {
-                        System.out.println("Erro ao adicionar o item ao cardápio.");
+                        System.out.println("Erro ao adicionar o Prato ao cardápio.");
                     }
                     break;
 
                 case 3:
                     System.out.println("\nAlterar prato do cardápio:");
-                    int idPrato = Console.readInt("Informe o ID do prato a ser alterado: ");
-                    Cardapio pratoExistente = DataCardapio.buscarItemCardapio(idPrato);
-                    if (pratoExistente != null) {
-                        String novoNome = Console.readString("Informe o novo nome do prato: ");
-                        double novoPreco = Console.readDouble("Informe o novo preço do prato: ");
-                        pratoExistente.setNome(novoNome);
-                        pratoExistente.setPreco(novoPreco);
-                        if (DataCardapio.alterarItemCardapio(pratoExistente)) {
+                    prato = new Cardapio();
+                    prato = DataCardapio.buscarPratoCardapio(Console.readInt("Informe o ID do prato a ser alterado: "));
+                    if (prato != null) {
+                        prato.setNome(Console.readString("Informe o novo nome do prato: "));
+                        prato.setPreco(Console.readDouble("Informe o novo preço do prato: "));
+                        if (DataCardapio.alterar(prato)) {
                             System.out.println("Prato do cardápio alterado com sucesso.");
                         } else {
                             System.out.println("Erro ao alterar o prato do cardápio.");
@@ -57,12 +54,17 @@ public class CozinheiroCardapio {
                     break;
 
                 case 4:
-                    System.out.println("\nRemover item do cardápio:");
-                    int id = Console.readInt("Informe o ID do item a ser removido: ");
-                    if (DataCardapio.removerItemCardapio(id)) {
-                        System.out.println("Item removido do cardápio com sucesso.");
+                    System.out.println("\nRemover Prato do cardápio:");
+                    prato = new Cardapio();
+                    prato = DataCardapio.buscarPratoCardapio(Console.readInt("Informe o ID do Prato a ser removido: "));
+                    if (prato != null) {
+                        if (DataCardapio.excluir(prato)) {
+                            System.out.println("Prato removido do cardápio com sucesso.");
+                        } else {
+                            System.out.println("Erro ao remover o Prato do cardápio.");
+                        }
                     } else {
-                        System.out.println("Erro ao remover o item do cardápio.");
+                        System.out.println("Prato do card\u00E1pio n\u00E3o encontrado.");
                     }
                     break;
 

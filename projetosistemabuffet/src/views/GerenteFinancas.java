@@ -8,5 +8,6 @@ public class GerenteFinancas {
             // Gasto com funcionarios
             // Gasto com estoque
             // Balanco geral
+            lembrete pra fazer isso aq
     }
 }

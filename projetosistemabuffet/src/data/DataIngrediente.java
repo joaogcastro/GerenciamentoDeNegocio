@@ -6,7 +6,7 @@ import javax.persistence.TypedQuery;
 
 import models.Ingrediente;
 
-public class DataEstoque {
+public class DataIngrediente {
 
     public static boolean incluir(Ingrediente ingrediente) {
         try {
@@ -45,7 +45,7 @@ public class DataEstoque {
         }
     }
 
-    public static void baixaItens(Ingrediente ingrediente, int qntItem) {
+    public static void darBaixa(Ingrediente ingrediente, int qntItem) {
         int novaQnt = ingrediente.getQuantidade() - qntItem;
         if (qntItem >= 0) {
             ingrediente.setQuantidade(novaQnt);
@@ -71,8 +71,21 @@ public class DataEstoque {
 
     public static Ingrediente procurarID(int idIngrediente) {
         EntityManager manager = EntityManagerFactory.getInstance();
-        TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i WHERE i.idIngrediente = :id", Ingrediente.class);
+        TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i WHERE i.Ingrediente = :id", Ingrediente.class);
         consulta.setParameter("id", idIngrediente);
+        List<Ingrediente> resultados = consulta.getResultList();
+
+        if (!resultados.isEmpty()) {
+            return resultados.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    public static Ingrediente procurarNomeIngrediente (Ingrediente ingrediente){
+        EntityManager manager = EntityManagerFactory.getInstance();
+        TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i WHERE i.nomeIngrediente = :nome", Ingrediente.class);
+        consulta.setParameter("nome", ingrediente.getNomeIngrediente());
         List<Ingrediente> resultados = consulta.getResultList();
 
         if (!resultados.isEmpty()) {

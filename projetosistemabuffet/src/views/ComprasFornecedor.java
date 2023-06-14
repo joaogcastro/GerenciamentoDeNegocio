@@ -2,11 +2,14 @@ package views;
 
 import data.DataFornecedor;
 import models.Fornecedor;
+import util.CNPJUtils;
 import util.Console;
+import util.TelefoneUtils;
 
 public class ComprasFornecedor {
 
     public static void gerenciarFornecedores() {
+        Fornecedor fornecedor;
         int opcFornecedor;
         do {
             System.out.println("\nMenu Gerenciar Fornecedores:");
@@ -25,35 +28,41 @@ public class ComprasFornecedor {
 
                 case 2:
                     System.out.println("\nAdicionar fornecedor:");
-                    String nome = Console.readString("Informe o nome do fornecedor: ");
-                    String telefone = Console.readString("Informe o telefone do fornecedor: ");
-                    String cnpj = Console.readString("Informe o CNPJ do fornecedor: ");
+                    fornecedor = new Fornecedor();
+                    fornecedor.setCnpj(Console.readString("Informe o CNPJ do fornecedor: "));
+                    if (CNPJUtils.validarCNPJ(fornecedor.getCnpj())) {
+                        if (DataFornecedor.buscarCNPJ(fornecedor) == null) {
+                            fornecedor.setNome(Console.readString("Informe o nome do fornecedor: "));
+                            fornecedor.setTelefone(Console.readString("Informe o telefone do fornecedor: "));
+                            
+                            //Formatar no padrao do banco
+                            String cnpjFormatado = CNPJUtils.formatarCNPJ(fornecedor.getCnpj());
+                            fornecedor.setCnpj(cnpjFormatado);
+                            String telefoneFormatado = TelefoneUtils.formatarTelefone(fornecedor.getTelefone());
+                            fornecedor.setTelefone(telefoneFormatado);
 
-                    Fornecedor novoFornecedor = new Fornecedor();
-                    novoFornecedor.setNome(nome);
-                    novoFornecedor.setTelefone(telefone);
-                    novoFornecedor.setCnpj(cnpj);
+                            if (DataFornecedor.incluir(fornecedor)) {
+                                System.out.println("Fornecedor adicionado com sucesso.");
+                            } else {
+                                System.out.println("Erro ao adicionar fornecedor.");
+                            }
 
-                    if (DataFornecedor.incluir(novoFornecedor)) {
-                        System.out.println("Fornecedor adicionado com sucesso.");
+                        } else {
+                            System.out.println("Este fornecedor já está cadastrado.");
+                        }
                     } else {
-                        System.out.println("Erro ao adicionar fornecedor.");
+                        System.out.println("CNPJ inválido.");
                     }
                     break;
 
                 case 3:
                     System.out.println("\nAlterar fornecedor:");
-                    int id = Console.readInt("Informe o ID do fornecedor a ser alterado: ");
-                    Fornecedor fornecedor = DataFornecedor.buscarFornecedorPorId(id);
+                    fornecedor = DataFornecedor.buscarFornecedorPorId(Console.readInt("Informe o ID do fornecedor a ser alterado: "));
 
                     if (fornecedor != null) {
-                        String nomeAlterar = Console.readString("Informe o novo nome do fornecedor: ");
-                        String telefoneAlterar = Console.readString("Informe o novo telefone do fornecedor: ");
-                        String cnpjAlterar = Console.readString("Informe o novo CNPJ do fornecedor: ");
-
-                        fornecedor.setNome(nomeAlterar);
-                        fornecedor.setTelefone(telefoneAlterar);
-                        fornecedor.setCnpj(cnpjAlterar);
+                        fornecedor.setNome(Console.readString("Informe o novo nome do fornecedor: "));
+                        fornecedor.setTelefone(Console.readString("Informe o novo telefone do fornecedor: "));
+                        fornecedor.setCnpj(Console.readString("Informe o novo CNPJ do fornecedor: "));
 
                         if (DataFornecedor.alterar(fornecedor)) {
                             System.out.println("Fornecedor alterado com sucesso.");
@@ -67,11 +76,9 @@ public class ComprasFornecedor {
 
                 case 4:
                     System.out.println("\nRemover fornecedor:");
-                    int idRemover = Console.readInt("Informe o ID do fornecedor a ser removido: ");
-                    Fornecedor fornecedorRemover = DataFornecedor.buscarFornecedorPorId(idRemover);
-
-                    if (fornecedorRemover != null) {
-                        if (DataFornecedor.excluir(fornecedorRemover)) {
+                    fornecedor= DataFornecedor.buscarFornecedorPorId(Console.readInt("Informe o ID do fornecedor a ser removido: "));
+                    if (fornecedor != null) {
+                        if (DataFornecedor.excluir(fornecedor)) {
                             System.out.println("Fornecedor removido com sucesso.");
                         } else {
                             System.out.println("Erro ao remover fornecedor.");
