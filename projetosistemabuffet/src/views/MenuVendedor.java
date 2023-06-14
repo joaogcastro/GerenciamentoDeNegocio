@@ -1,6 +1,7 @@
 package views;
 
 import util.Console;
+import util.GerenciadorFestas;
 
 public class MenuVendedor {
 
@@ -26,6 +27,8 @@ public class MenuVendedor {
                 case 3:
                     
                 case 4:
+
+                boolean dataOcupada = GerenciadorFestas.verificarDataOcupada(dataInicio, dataFim);
 
                 case 5:
                     VendedorCliente.contatarClientes();
