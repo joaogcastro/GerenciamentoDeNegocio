@@ -28,8 +28,7 @@ public class Festa {
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Funcionario> funcionarios;
     private double valorFesta;
-    private boolean pagamentoRealizado;
-
+    
     public int getIdFesta() {
         return idFesta;
     }
@@ -92,14 +91,6 @@ public class Festa {
 
     public void setValorFesta(double valorFesta) {
         this.valorFesta = valorFesta;
-    }
-
-    public boolean isPagamentoRealizado() {
-        return pagamentoRealizado;
-    }
-
-    public void setPagamentoRealizado(boolean pagamentoRealizado) {
-        this.pagamentoRealizado = pagamentoRealizado;
     }
 
     public int getNumeroConvidados() {
