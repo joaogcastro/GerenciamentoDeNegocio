@@ -31,12 +31,7 @@ public class VendedorFesta {
         cliente.setCpf(Console.readString("Informe o cpf do cliente: "));
         if (CPFUtils.validarCPF(cliente.getCpf()) == true) {
             if (DataCliente.buscarCPF(cliente) == null) {
-                System.out.println("Cliente não cadastrado, ");
-                cliente.setNome(Console.readString("Nome do cliente: "));
-                cliente.setTelefone(Console.readString("Informe o telefone do cliente: "));
-                cliente.setEmail(Console.readString("Informe o email do cliente: "));
-                cliente.setEndereco(Console.readString("Informe o endereço do cliente: "));
-                DataCliente.incluir(cliente);
+                cadastrarCliente(cliente);
             }
             cliente = DataCliente.buscarCPF(cliente);
             Festa festa = new Festa();
@@ -97,6 +92,15 @@ public class VendedorFesta {
         } else {
             System.out.println("Esse cpf não é válido.");
         }
+    }
+
+    private static void cadastrarCliente(Cliente cliente) {
+        System.out.println("Cliente não cadastrado, ");
+        cliente.setNome(Console.readString("Nome do cliente: "));
+        cliente.setTelefone(Console.readString("Informe o telefone do cliente: "));
+        cliente.setEmail(Console.readString("Informe o email do cliente: "));
+        cliente.setEndereco(Console.readString("Informe o endereço do cliente: "));
+        DataCliente.incluir(cliente);
     }
 
     private static boolean verificarConflitoHorario(Festa festa) {
