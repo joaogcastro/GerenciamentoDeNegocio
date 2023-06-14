@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -36,10 +37,11 @@ public class VendedorFesta {
             cliente = DataCliente.buscarCPF(cliente);
             Festa festa = new Festa();
             festa.setCliente(cliente);
-            festa.setDataInicio(
-                    LocalDateTimeReader.readLocalDateTime("Informe a data de início (no formato dd/MM/yyyy HH:mm): "));
-            festa.setDataFim(
-                    LocalDateTimeReader.readLocalDateTime("Informe a data do fim (no formato dd/MM/yyyy HH:mm): "));
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Informe a data de início (no formato dd/MM/yyyy HH:mm): ");
+            festa.setDataInicio(LocalDateTimeReader.readLocalDateTimeFromInput(scanner));
+            System.out.println("Informe a data do fim (no formato dd/MM/yyyy HH:mm): ");
+            festa.setDataFim(LocalDateTimeReader.readLocalDateTimeFromInput(scanner));
 
             if (verificarConflitoHorario(festa)) {
                 System.out.println("O horário selecionado não está disponível. Por favor, escolha outro horário.");
@@ -107,7 +109,8 @@ public class VendedorFesta {
         try {
             EntityManager manager = EntityManagerFactory.getInstance();
             TypedQuery<Festa> query = manager.createQuery(
-                    "SELECT f FROM Festa f WHERE f.horaInicio < :horaTermino AND f.horaTermino > :horaInicio",
+                    "SELECT f FROM models.Festa f WHERE f.dataInicio < :horaTermino AND f.dataFim > :horaInicio\r\n" + //
+                            "",
                     Festa.class);
             query.setParameter("horaTermino", festa.getDataFim());
             query.setParameter("horaInicio", festa.getDataInicio());
