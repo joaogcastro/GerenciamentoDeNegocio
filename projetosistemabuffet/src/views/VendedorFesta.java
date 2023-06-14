@@ -19,7 +19,6 @@ import models.Festa;
 import models.Funcionario;
 import util.Console;
 import util.LocalDateTimeReader;
-import util.BooleanUtils;
 import util.CPFUtils;
 
 public class VendedorFesta {
@@ -79,9 +78,7 @@ public class VendedorFesta {
                 festa.setValorFesta(calcularPrecoFesta(festa));
 
                 System.out.println("O preço da festa é de: "+festa.getValorFesta());
-                System.out.println("Solicite o pagamento para o cliente.");
-                System.out.println("O cliente pagou à vista?");
-                festa.setPagamentoRealizado(BooleanUtils.formatarSimNao());
+                System.out.println("Solicite o pagamento para o cliente.");    
 
                 if(DataFesta.incluir(festa)){
                     System.out.println("Festa cadastrada com sucesso.");

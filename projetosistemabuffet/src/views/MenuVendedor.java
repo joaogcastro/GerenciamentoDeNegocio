@@ -1,10 +1,13 @@
 package views;
 
+import data.DataFesta;
+import models.Festa;
 import util.Console;
 
 public class MenuVendedor {
 
     public static void exibirMenuVendedor() {
+        Festa festa;
         int opc;
         do {
             System.out.println("\n\nMenu Vendedor:");
@@ -21,7 +24,13 @@ public class MenuVendedor {
                 case 1:
                     VendedorFesta.venderFesta();
                     break;
+
                 case 2:
+                    System.out.println("Detalhes da festa:");
+                    festa = new Festa();
+                    festa.setIdFesta(Console.readInt("Informe o id da festa: "));
+                    festa= 
+                    DataFesta.exibirDetalhesFesta(festa);
                     
                 case 3:
                     
