@@ -2,7 +2,7 @@ package views;
 
 import util.Console;
 
-public class MenuMaster {
+public class MasterMenu {
 
     public static void exibirMenuMaster() {
         int opc;

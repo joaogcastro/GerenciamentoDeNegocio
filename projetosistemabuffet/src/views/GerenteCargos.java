@@ -16,13 +16,13 @@ public class GerenteCargos {
 
             switch (opc) {
                 case 1:
-                    MenuCompras.exibirMenuCompras();
+                    ComprasMenu.exibirMenuCompras();
                     break;
                 case 2:
-                    MenuVendedor.exibirMenuVendedor();
+                    VendedorMenu.exibirMenuVendedor();
                     break;
                 case 3:
-                    MenuCozinheiro.exibirMenuCozinheiro();
+                    CozinheiroMenu.exibirMenuCozinheiro();
                     break;
                 case 4:
                     System.out.println("\nVoltando ao Menu Gerente.");

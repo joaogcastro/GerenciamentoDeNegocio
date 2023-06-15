@@ -6,6 +6,7 @@ import javax.persistence.TypedQuery;
 import models.Cliente;
 
 public class DataCliente {
+    
     public static boolean incluir(Cliente cliente) {
         try {
             EntityManager manager = EntityManagerFactory.getInstance();

@@ -3,11 +3,11 @@ package controllers;
 import data.DataLogin;
 import models.Usuario;
 import util.Console;
-import views.MenuCompras;
-import views.MenuCozinheiro;
-import views.MenuGerente;
-import views.MenuMaster;
-import views.MenuVendedor;
+import views.ComprasMenu;
+import views.CozinheiroMenu;
+import views.GerenteMenu;
+import views.MasterMenu;
+import views.VendedorMenu;
 
 public class Login {
 	public static void fazerLogin() {
@@ -22,28 +22,27 @@ public class Login {
 				logado = true;
 				switch (usuario.getCargo()) {
 					case "vendedor":
-						MenuVendedor.exibirMenuVendedor();
+						VendedorMenu.exibirMenuVendedor();
 						break;
 					case "cozinheiro":
-						MenuCozinheiro.exibirMenuCozinheiro();
+						CozinheiroMenu.exibirMenuCozinheiro();
 						break;
 					case "gerente":
-						MenuGerente.exibirMenuGerente();
+						GerenteMenu.exibirMenuGerente();
 						break;
 					case "master":
-						MenuMaster.exibirMenuMaster();
+						MasterMenu.exibirMenuMaster();
 						break;
 					case "compras":
-						MenuCompras.exibirMenuCompras();
+						ComprasMenu.exibirMenuCompras();
 						break;
 					default:
-						System.out.println("Cargo desconhecido.");
+						System.out.println("Erro: Cargo desconhecido. Informe ao administrador do sistema.");
 						break;
 				}
 			} else {
 				System.out.println("Usuario ou senha incorretos.");
 			}
 		} while (logado == false);
-
 	}
 }

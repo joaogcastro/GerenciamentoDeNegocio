@@ -1,6 +1,7 @@
 package util;
 
 public class TelefoneUtils {
+
     public static String formatarTelefone(String telefone) {
         // Remove todos os caracteres que não sejam dígitos
         String digitsOnly = telefone.replaceAll("[^0-9]", "");

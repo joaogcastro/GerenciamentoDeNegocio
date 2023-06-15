@@ -108,4 +108,5 @@ public class Festa {
     public void setNumeroCriancas(int numeroCriancas) {
         this.numeroCriancas = numeroCriancas;
     }
+
 }

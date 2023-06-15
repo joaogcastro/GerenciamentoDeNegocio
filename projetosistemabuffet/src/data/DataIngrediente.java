@@ -3,7 +3,6 @@ package data;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-
 import models.Ingrediente;
 
 public class DataIngrediente {
@@ -32,27 +31,16 @@ public class DataIngrediente {
         }
     }
 
-    public static void listarIngredientes() {
-        EntityManager manager = EntityManagerFactory.getInstance();
-        TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i", Ingrediente.class);
-        List<Ingrediente> ingredientes = consulta.getResultList();
-
-        for (Ingrediente ingrediente : ingredientes) {
-            System.out.println("ID: " + ingrediente.getIdIngrediente());
-            System.out.println("Nome: " + ingrediente.getNomeIngrediente());
-            System.out.println("Quantidade: " + ingrediente.getQuantidade());
-            System.out.println("-----------------------------");
-        }
-    }
-
-    public static void darBaixa(Ingrediente ingrediente, int qntItem) {
-        int novaQnt = ingrediente.getQuantidade() - qntItem;
-        if (qntItem >= 0) {
-            ingrediente.setQuantidade(novaQnt);
-            alterar(ingrediente);
-            System.out.println("Alterada com sucesso.");
-        } else {
-            System.out.println("Não é possível realizar a alteração.");
+    public static boolean excluir(Ingrediente ingrediente) {
+        try {
+            EntityManager manager = EntityManagerFactory.getInstance();
+            manager.getTransaction().begin();
+            manager.remove(ingrediente);
+            manager.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
@@ -95,4 +83,16 @@ public class DataIngrediente {
         }
     }
 
+    public static void listarIngredientes() {
+        EntityManager manager = EntityManagerFactory.getInstance();
+        TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i", Ingrediente.class);
+        List<Ingrediente> ingredientes = consulta.getResultList();
+
+        for (Ingrediente ingrediente : ingredientes) {
+            System.out.println("ID: " + ingrediente.getIdIngrediente());
+            System.out.println("Nome: " + ingrediente.getNomeIngrediente());
+            System.out.println("Quantidade: " + ingrediente.getQuantidade());
+            System.out.println("-----------------------------");
+        }
+    }
 }

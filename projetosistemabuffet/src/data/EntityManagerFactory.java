@@ -10,9 +10,7 @@ public class EntityManagerFactory {
 	public static EntityManager getInstance() {
 		if (manager == null) {
 			manager = Persistence.createEntityManagerFactory("exemplo").createEntityManager();
-
 		}
 		return manager;
 	}
-
 }

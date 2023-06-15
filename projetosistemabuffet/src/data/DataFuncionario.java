@@ -104,4 +104,5 @@ public class DataFuncionario {
             System.out.println("Não há funcionários cadastrados no banco.");
         }
     }
+
 }

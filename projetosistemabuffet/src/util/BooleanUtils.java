@@ -11,5 +11,4 @@ public class BooleanUtils {
 
         return resposta.equalsIgnoreCase("s") || resposta.equalsIgnoreCase("sim");
     }
-
 }

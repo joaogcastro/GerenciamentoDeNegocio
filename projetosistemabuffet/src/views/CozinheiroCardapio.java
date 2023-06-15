@@ -10,7 +10,7 @@ public class CozinheiroCardapio {
         Cardapio prato;
         int opcCardapio;
         do {
-            System.out.println("\nMenu Cardápio:");
+            System.out.println("\nGerenciar Cardápio:");
             System.out.println("1- Listar pratos do cardápio.");
             System.out.println("2- Adicionar prato ao cardápio.");
             System.out.println("3- Alterar prato do cardápio");

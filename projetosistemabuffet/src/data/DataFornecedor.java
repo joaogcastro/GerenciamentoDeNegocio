@@ -3,7 +3,6 @@ package data;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-
 import models.Fornecedor;
 
 public class DataFornecedor {
@@ -55,30 +54,6 @@ public class DataFornecedor {
 		}
 	}
 
-
-	public static void listarFornecedores() {
-    try {
-        EntityManager manager = EntityManagerFactory.getInstance();
-        TypedQuery<Fornecedor> consulta = manager.createQuery("SELECT f FROM Fornecedor f", Fornecedor.class);
-        List<Fornecedor> fornecedores = consulta.getResultList();
-
-        if (!fornecedores.isEmpty()) {
-            System.out.println("Fornecedores cadastrados:");
-            for (Fornecedor fornecedor : fornecedores) {
-                System.out.println("ID: " + fornecedor.getId());
-                System.out.println("Nome: " + fornecedor.getNome());
-                System.out.println("Telefone: " + fornecedor.getTelefone());
-                System.out.println("CNPJ: " + fornecedor.getCnpj());
-                System.out.println("-----------------------------");
-            }
-        } else {
-            System.out.println("Nenhum fornecedor cadastrado.");
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-}
-
 	public static Fornecedor buscarCNPJ(Fornecedor fornecedor) {
 		String cnpjFormatado = fornecedor.getCnpj().replaceAll("[\\.-]", ""); // Remove os caracteres especiais do CNPJ
 		return buscarFornecedorPorCNPJ(cnpjFormatado);
@@ -87,6 +62,29 @@ public class DataFornecedor {
 	public static Fornecedor buscarCNPJ(String cnpj) {
 		String cnpjFormatado = cnpj.replaceAll("[\\.-]", ""); // Remove os caracteres especiais do CNPJ
 		return buscarFornecedorPorCNPJ(cnpjFormatado);
+	}
+
+	public static void listarFornecedores() {
+		try {
+			EntityManager manager = EntityManagerFactory.getInstance();
+			TypedQuery<Fornecedor> consulta = manager.createQuery("SELECT f FROM Fornecedor f", Fornecedor.class);
+			List<Fornecedor> fornecedores = consulta.getResultList();
+
+			if (!fornecedores.isEmpty()) {
+				System.out.println("Fornecedores cadastrados:");
+				for (Fornecedor fornecedor : fornecedores) {
+					System.out.println("ID: " + fornecedor.getId());
+					System.out.println("Nome: " + fornecedor.getNome());
+					System.out.println("Telefone: " + fornecedor.getTelefone());
+					System.out.println("CNPJ: " + fornecedor.getCnpj());
+					System.out.println("-----------------------------");
+				}
+			} else {
+				System.out.println("Nenhum fornecedor cadastrado.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private static Fornecedor buscarFornecedorPorCNPJ(String cnpjFormatado) {

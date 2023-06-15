@@ -1,5 +1,6 @@
 package models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ public class Fornecedor {
     int id;
     private String nome;
     private String telefone;
+    @Column(unique = true)
     private String cnpj;
 
     public String getCnpj() {
@@ -45,5 +47,4 @@ public class Fornecedor {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
 }

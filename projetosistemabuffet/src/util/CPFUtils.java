@@ -58,4 +58,5 @@ public class CPFUtils {
         // CPF válido
         return true;
     }
+
 }

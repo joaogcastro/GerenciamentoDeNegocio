@@ -1,8 +1,8 @@
 package data;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import java.util.List;
 import models.Cardapio;
 
 public class DataCardapio {
@@ -44,6 +44,11 @@ public class DataCardapio {
 		}
     }
 
+    public static Cardapio buscarPratoCardapio(int id) {
+        EntityManager manager = EntityManagerFactory.getInstance();
+        return manager.find(Cardapio.class, id);
+    }
+
     public static void listarPratosCardapio() {
         EntityManager manager = EntityManagerFactory.getInstance();
         TypedQuery<Cardapio> consulta = manager.createQuery("SELECT c FROM Cardapio c", Cardapio.class);
@@ -53,10 +58,5 @@ public class DataCardapio {
             System.out.println(
                     "ID: " + cardapio.getId() + ", Nome: " + cardapio.getNome() + ", Preço: " + cardapio.getPreco());
         }
-    }
-
-    public static Cardapio buscarPratoCardapio(int id) {
-        EntityManager manager = EntityManagerFactory.getInstance();
-        return manager.find(Cardapio.class, id);
     }
 }

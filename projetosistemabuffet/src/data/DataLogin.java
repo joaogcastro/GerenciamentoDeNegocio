@@ -103,7 +103,7 @@ public class DataLogin {
 		consulta.setParameter("param", usuario.getUsuario());
 		List<Usuario> usuarios = consulta.getResultList();
 		for (Usuario item : usuarios) {
-			if (item.getUsuario().equalsIgnoreCase(usuario.getUsuario())) {
+			if (item.getUsuario().equals(usuario.getUsuario())) {
 				if (item.getSenha().equals(usuario.getSenha())) {
 					return true;
 				}

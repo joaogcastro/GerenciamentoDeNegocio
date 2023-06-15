@@ -1,14 +1,10 @@
 package views;
 
-import data.DataFesta;
-import models.Festa;
 import util.Console;
-import util.GerenciadorFestas;
 
-public class MenuVendedor {
+public class VendedorMenu {
 
     public static void exibirMenuVendedor() {
-        Festa festa;
         int opc;
         do {
             System.out.println("\n\nMenu Vendedor:");
@@ -27,29 +23,16 @@ public class MenuVendedor {
                     break;
 
                 case 2:
-                    System.out.println("\nBuscar festas:");
-                    System.out.println("1- Listar todas as festas.");
-                    System.out.println("2- Buscar festas por cliente");
-                    int opcBuscar = Console.readInt("Informe a opção: ");
-
-                    switch(opcBuscar){
-                        case 1:
-                            System.out.println("\nLista de festas:");
-                            DataFesta.listarFestas();
-                    }
+                    VendedorFesta.buscarFestas();
+                    break;
                     
                 case 3:
-                    System.out.println("Detalhes da festa:");
-                    festa = new Festa();
-                    festa=DataFesta.buscarFestaPorId(Console.readInt("Informe o id da festa: "));
-                    if(festa!=null){
-                        DataFesta.exibirDetalhesFesta(festa);
-                    }else{
-                        System.out.println("\nEste id não corresponde a nenhuma festa.");
-                    }
+                    VendedorFesta.exibirResumoDaFesta();
                     break;
 
                 case 4:
+                    VendedorFesta.cancelarFesta();
+                    break;
 
                 case 5:
                     VendedorCliente.contatarClientes();
@@ -60,7 +43,12 @@ public class MenuVendedor {
                     break;
 
                 case 7:
-                    System.out.println("");
+                    System.out.println("Fazendo logoff.");
+                    break;
+
+                default:
+                    System.out.println("Esta opção não é válida.");
+                    break;
             }
 
         } while (opc != 7);
