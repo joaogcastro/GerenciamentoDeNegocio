@@ -48,6 +48,7 @@ public class ComprasIngrediente {
         ingrediente.setNomeIngrediente(Console.readString("Informe o nome do ingrediente: "));
         if (DataIngrediente.procurarNomeIngrediente(ingrediente) == null) {
             ingrediente.setQuantidade(Console.readInt("Informe a quantidade do ingrediente: "));
+            ingrediente.setValorUnitario(Console.readDouble("Informe quanto foi pago na unidade deste ingrediente: "));
             if (DataIngrediente.incluir(ingrediente)) {
                 System.out.println("\nIngrediente adicionado ao estoque com sucesso.");
             } else {

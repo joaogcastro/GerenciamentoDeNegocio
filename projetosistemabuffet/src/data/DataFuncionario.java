@@ -105,4 +105,16 @@ public class DataFuncionario {
         }
     }
 
+    public static double somarSalarioFuncionarios() {
+        EntityManager manager = EntityManagerFactory.getInstance();
+        TypedQuery<Double> consulta = manager.createQuery("SELECT SUM(f.salario) FROM Funcionario f", Double.class);
+        Double resultado = consulta.getSingleResult();
+
+        if (resultado != null) {
+            return resultado;
+        } else {
+            return 0.0;
+        }
+    }
+
 }

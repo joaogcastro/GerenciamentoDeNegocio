@@ -46,7 +46,8 @@ public class DataIngrediente {
 
     public static Ingrediente procurarID(Ingrediente ingrediente) {
         EntityManager manager = EntityManagerFactory.getInstance();
-        TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i WHERE i.idIngrediente = :id", Ingrediente.class);
+        TypedQuery<Ingrediente> consulta = manager
+                .createQuery("SELECT i FROM Ingrediente i WHERE i.idIngrediente = :id", Ingrediente.class);
         consulta.setParameter("id", ingrediente.getIdIngrediente());
         List<Ingrediente> resultados = consulta.getResultList();
 
@@ -59,7 +60,8 @@ public class DataIngrediente {
 
     public static Ingrediente procurarID(int idIngrediente) {
         EntityManager manager = EntityManagerFactory.getInstance();
-        TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i WHERE i.Ingrediente = :id", Ingrediente.class);
+        TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i WHERE i.Ingrediente = :id",
+                Ingrediente.class);
         consulta.setParameter("id", idIngrediente);
         List<Ingrediente> resultados = consulta.getResultList();
 
@@ -70,9 +72,10 @@ public class DataIngrediente {
         }
     }
 
-    public static Ingrediente procurarNomeIngrediente (Ingrediente ingrediente){
+    public static Ingrediente procurarNomeIngrediente(Ingrediente ingrediente) {
         EntityManager manager = EntityManagerFactory.getInstance();
-        TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i WHERE i.nomeIngrediente = :nome", Ingrediente.class);
+        TypedQuery<Ingrediente> consulta = manager
+                .createQuery("SELECT i FROM Ingrediente i WHERE i.nomeIngrediente = :nome", Ingrediente.class);
         consulta.setParameter("nome", ingrediente.getNomeIngrediente());
         List<Ingrediente> resultados = consulta.getResultList();
 
@@ -92,7 +95,22 @@ public class DataIngrediente {
             System.out.println("ID: " + ingrediente.getIdIngrediente());
             System.out.println("Nome: " + ingrediente.getNomeIngrediente());
             System.out.println("Quantidade: " + ingrediente.getQuantidade());
+            System.out.println("Valor unitário: " + ingrediente.getValorUnitario());
             System.out.println("-----------------------------");
+        }
+    }
+
+    public static void calcularValorTotalEstoque() {
+        double valorTotal=0;
+        EntityManager manager = EntityManagerFactory.getInstance();
+        TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i", Ingrediente.class);
+        List<Ingrediente> ingredientes = consulta.getResultList();
+
+        System.out.println("Ingredientes no estoque:");
+        for (Ingrediente ingrediente : ingredientes) {
+            valorTotal += ingrediente.getQuantidade() * ingrediente.getValorUnitario();
+            System.out.println(" - " + ingrediente.getNomeIngrediente() + "   x" + ingrediente.getQuantidade() + "  "
+                    + ingrediente.getValorUnitario() + "   " + valorTotal);
         }
     }
 }

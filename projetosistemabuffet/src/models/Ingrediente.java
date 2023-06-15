@@ -12,6 +12,7 @@ public class Ingrediente {
     private int idIngrediente;
     private String nomeIngrediente;
     private int quantidade;
+    private double valorUnitario;
 
     public int getQuantidade() {
         return quantidade;
@@ -37,4 +38,11 @@ public class Ingrediente {
         this.nomeIngrediente = nomeIngrediente;
     }
 
+    public double getValorUnitario() {
+        return valorUnitario;
+    }
+
+    public void setValorUnitario(double valorUnitario) {
+        this.valorUnitario = valorUnitario;
+    }
 }
