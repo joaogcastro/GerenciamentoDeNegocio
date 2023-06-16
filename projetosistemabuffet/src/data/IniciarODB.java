@@ -15,6 +15,7 @@ public class IniciarODB {
             if (DataLogin.incluir(usuario)) {
                 return true;
             }
+            ExemplosDB.adicionarExemplos();
         }
         return false;
     }
@@ -26,5 +27,4 @@ public class IniciarODB {
         List<Usuario> usuarioMaster = consulta.getResultList();
         return !usuarioMaster.isEmpty();
     }
-
 }

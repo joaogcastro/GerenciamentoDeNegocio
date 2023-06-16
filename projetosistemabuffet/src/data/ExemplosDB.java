@@ -1,6 +1,5 @@
 package data;
 
-import data.*;
 import models.Cardapio;
 import models.Cliente;
 import models.Decoracao;
@@ -26,9 +25,7 @@ public class ExemplosDB {
         String telefoneFormatado = TelefoneUtils.formatarTelefone(cliente1.getTelefone());
         cliente1.setTelefone(telefoneFormatado);
         if(DataCliente.incluir(cliente1)){
-            System.out.println("cliente1 incluido");
-        }else{
-            System.out.println("deu cagada");
+            System.out.println("Exemplos incluídos no banco de dados.");
         }
 
         Cliente cliente2 = new Cliente();
@@ -408,5 +405,4 @@ public class ExemplosDB {
         funcionario10.setTelefone(telefoneFormatado);
         DataFuncionario.incluir(funcionario10);
     }
-
 }
