@@ -24,7 +24,7 @@ public class CozinheiroIngrediente {
 
         if (ingrediente != null) {
             int quantidade = Console.readInt("Informe a quantidade utilizada: ");
-            if (quantidade >= ingrediente.getQuantidade()) {
+            if (quantidade <= ingrediente.getQuantidade()) {
                 int novaQuantidade = ingrediente.getQuantidade()-quantidade;
                 ingrediente.setQuantidade(novaQuantidade);
                 DataIngrediente.alterar(ingrediente);

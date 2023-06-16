@@ -13,10 +13,10 @@ public class ComprasIngrediente {
 
     public static void gerenciarIngredientesDoEstoque() {
         int opc;
-        System.out.println("\nGerenciar ingredientes do estoque da cozinha:");
         do {
+            System.out.println("\nGerenciar ingredientes do estoque da cozinha:");
             opc = Console.readInt(
-                    "1- Adicionar ingrediente novo.\n 2- Adicionar quantidade para um ingrediente existente.\n3- Excluir um ingrediente.\n4- Voltar ao menu.\nInforme a opção:  ");
+                    "1- Adicionar ingrediente novo.\n2- Adicionar quantidade para um ingrediente existente.\n3- Excluir um ingrediente.\n4- Voltar ao menu.\nInforme a opção:  ");
 
             switch (opc) {
                 case 1:
@@ -60,7 +60,7 @@ public class ComprasIngrediente {
     }
 
     private static void alterarQuantidadeIngrediente() {
-        System.out.println("Adicionando mais quantidade para um ingrediente existente:");
+        System.out.println("\nAdicionando mais quantidade para um ingrediente existente:");
         Ingrediente ingredienteExistente = new Ingrediente();
         String escolha = Console.readString("Você deseja pesquisar o ingrediente pelo nome ou id?\n");
         if (escolha.equalsIgnoreCase("id")) {
@@ -97,5 +97,4 @@ public class ComprasIngrediente {
             System.out.println("\nEsse ID não corresponde a nenhum ingrediente.");
         }
     }
-
 }

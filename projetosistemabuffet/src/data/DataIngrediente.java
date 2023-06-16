@@ -60,7 +60,7 @@ public class DataIngrediente {
 
     public static Ingrediente procurarID(int idIngrediente) {
         EntityManager manager = EntityManagerFactory.getInstance();
-        TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i WHERE i.Ingrediente = :id",
+        TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i WHERE i.idIngrediente = :id",
                 Ingrediente.class);
         consulta.setParameter("id", idIngrediente);
         List<Ingrediente> resultados = consulta.getResultList();
@@ -91,6 +91,7 @@ public class DataIngrediente {
         TypedQuery<Ingrediente> consulta = manager.createQuery("SELECT i FROM Ingrediente i", Ingrediente.class);
         List<Ingrediente> ingredientes = consulta.getResultList();
 
+        System.out.println("\n-----------------------------");
         for (Ingrediente ingrediente : ingredientes) {
             System.out.println("ID: " + ingrediente.getIdIngrediente());
             System.out.println("Nome: " + ingrediente.getNomeIngrediente());

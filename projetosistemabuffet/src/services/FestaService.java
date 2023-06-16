@@ -128,21 +128,23 @@ public class FestaService {
     }
 
     public static void exibirDetalhesFesta(Festa festa) {
+        System.out.println("\n---------------------------------");
         System.out.println("Festa Id " + festa.getIdFesta() + " do cliente " + festa.getCliente().getNome() + ":");
         System.out.println("Data de início: " + festa.getDataInicio());
         System.out.println("Data do fim: " + festa.getDataFim());
         System.out.println("Número de convidados: " + festa.getNumeroConvidados());
         System.out.println("Número de crianças: " + festa.getNumeroCriancas());
         System.out.println("Tema da decoração: " + festa.getDecoracao().getTema());
-        System.out.println("Pratos da festa:");
+        System.out.println("\nPratos da festa:");
         for (Cardapio item : festa.getCardapio()) {
             System.out.println("Prato: " + item.getNome() + "   Preço: " + item.getPreco());
         }
-        System.out.println("Funcionários da festa:");
+        System.out.println("\nFuncionários da festa:");
         for (Funcionario item : festa.getFuncionarios()) {
             System.out.println("Id: " + item.getId() + "   Nome: " + item.getNome());
         }
         exibirRelatórioFinanceiroFesta(festa.getIdFesta());
+        System.out.println("---------------------------------");
     }
 
     public static boolean verificarConflitoHorario(Festa festa) {
@@ -238,11 +240,9 @@ public class FestaService {
             double lucro = calcularLucroFesta(idFesta);
 
             System.out.println("\nRelatório Financeiro da Festa");
-            System.out.println("----------------------------");
-            System.out.println("Valor da Festa: R$ " + valorFesta);
-            System.out.println("Despesas Totais: R$ " + despesasTotais);
-            System.out.println("Lucro: R$ " + lucro);
-            System.out.println("----------------------------");
+            System.out.println(" -Valor da Festa: R$" + valorFesta);
+            System.out.println(" -Despesas Totais: R$" + despesasTotais);
+            System.out.println(" -Lucro: R$" + lucro);
         } else {
             System.out.println("Festa não encontrada.");
         }
