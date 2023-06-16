@@ -44,10 +44,14 @@ public class FestaService {
         DataCardapio.listarPratosCardapio();
         Cardapio cardapio = null;
         while (cardapio == null) {
-            cardapio = DataCardapio
-                    .buscarPratoCardapio(Console.readInt("Informe o Id do prato escolhido: "));
+            cardapio = DataCardapio.buscarPratoCardapio(Console.readInt("Informe o Id do prato escolhido: "));
             if (cardapio != null) {
-                festa.getCardapio().add(cardapio);
+                List<Cardapio> cardapioList = festa.getCardapio();
+                if (cardapioList == null) {
+                    cardapioList = new ArrayList<>();
+                    festa.setCardapio(cardapioList);
+                }
+                cardapioList.add(cardapio);
             } else {
                 System.out.println("\nEste id não corresponde a nenhum prato do cardápio.");
             }
@@ -74,7 +78,12 @@ public class FestaService {
                     }
 
                     if (!pratoJaExistente) {
-                        festa.getCardapio().add(proximoPrato);
+                        List<Cardapio> cardapioList = festa.getCardapio();
+                        if (cardapioList == null) {
+                            cardapioList = new ArrayList<>();
+                            festa.setCardapio(cardapioList);
+                        }
+                        cardapioList.add(proximoPrato);
                     } else {
                         System.out.println("\nPrato já cadastrado nesta festa.");
                     }
@@ -85,7 +94,6 @@ public class FestaService {
 
             adicionarMaisPrato = Console.readString("Deseja adicionar mais um prato? (s/n): ");
         }
-
     }
 
     public static void adicionarFuncionariosAutomaticamente(Festa festa) {
@@ -272,47 +280,47 @@ public class FestaService {
         }
     }
 
-public static void exibirFaturamentoTotal() {
-    EntityManager manager = EntityManagerFactory.getInstance();
-    TypedQuery<Festa> consulta = manager.createQuery("SELECT f FROM Festa f", Festa.class);
-    List<Festa> festas = consulta.getResultList();
+    public static void exibirFaturamentoTotal() {
+        EntityManager manager = EntityManagerFactory.getInstance();
+        TypedQuery<Festa> consulta = manager.createQuery("SELECT f FROM Festa f", Festa.class);
+        List<Festa> festas = consulta.getResultList();
 
-    if (!festas.isEmpty()) {
-        double totalValorFestas = 0;
-        double totalDespesasTotais = 0;
-        double totalLucro = 0;
-        LocalDateTime primeiraData = festas.get(0).getDataInicio();
-        LocalDateTime dataAtual = LocalDateTime.now();
-        long intervaloDias = ChronoUnit.DAYS.between(primeiraData, dataAtual);
+        if (!festas.isEmpty()) {
+            double totalValorFestas = 0;
+            double totalDespesasTotais = 0;
+            double totalLucro = 0;
+            LocalDateTime primeiraData = festas.get(0).getDataInicio();
+            LocalDateTime dataAtual = LocalDateTime.now();
+            long intervaloDias = ChronoUnit.DAYS.between(primeiraData, dataAtual);
 
-        for (Festa festa : festas) {
-            totalValorFestas += festa.getValorFesta();
-            totalDespesasTotais += calcularDespesasTotaisFesta(festa);
-            totalLucro += calcularLucroFesta(festa.getIdFesta());
+            for (Festa festa : festas) {
+                totalValorFestas += festa.getValorFesta();
+                totalDespesasTotais += calcularDespesasTotaisFesta(festa);
+                totalLucro += calcularLucroFesta(festa.getIdFesta());
+            }
+
+            System.out.println("Faturamento Total das Festas");
+            System.out.println("---------------------------");
+            System.out.println("Total de Festas: " + festas.size());
+            System.out.println("Total do Faturamento das Festas: R$" + totalValorFestas);
+
+            if (intervaloDias >= 30) {
+                double despesasMensais = calcularDespesasMensais();
+                totalDespesasTotais += despesasMensais;
+                System.out.println("Total das Despesas Mensais: R$" + despesasMensais);
+            }
+
+            System.out.println("Total das Despesas das festas: R$ " + totalDespesasTotais);
+            System.out.println("Total do Lucro: R$ " + totalLucro);
+            System.out.println("Balanço Geral: R$" + (totalValorFestas - totalDespesasTotais));
+            System.out.println("---------------------------");
+
+        } else {
+            System.out.println("Não há festas cadastradas.");
         }
-
-        System.out.println("Faturamento Total das Festas");
-        System.out.println("---------------------------");
-        System.out.println("Total de Festas: " + festas.size());
-        System.out.println("Total do Faturamento das Festas: R$" + totalValorFestas);
-
-        if (intervaloDias >= 30) {
-            double despesasMensais = calcularDespesasMensais();
-            totalDespesasTotais += despesasMensais;
-            System.out.println("Total das Despesas Mensais: R$" + despesasMensais);
-        }
-
-        System.out.println("Total das Despesas das festas: R$ " + totalDespesasTotais);
-        System.out.println("Total do Lucro: R$ " + totalLucro);
-        System.out.println("Balanço Geral: R$"+(totalValorFestas-totalDespesasTotais));
-        System.out.println("---------------------------");
-
-    } else {
-        System.out.println("Não há festas cadastradas.");
     }
-}
 
-    public static double calcularDespesasMensais(){
-        return 6200+DataFuncionario.somarSalarioFuncionarios();
+    public static double calcularDespesasMensais() {
+        return 6200 + DataFuncionario.somarSalarioFuncionarios();
     }
 }
