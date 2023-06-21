@@ -40,16 +40,14 @@ public class FestaService {
 
         while (!dataValida) {
             try {
-                System.out.println("Informe a data de início (no formato dd/MM/yyyy HH:mm): ");
+                System.out.println("\nInforme a data de início (no formato dd/MM/yyyy HH:mm): ");
                 String dataInicioStr = scanner.nextLine();
                 LocalDateTime dataInicio = LocalDateTime.parse(dataInicioStr, formatter);
                 festa.setDataInicio(dataInicio);
-
-                System.out.println("Informe a data do fim (no formato dd/MM/yyyy HH:mm): ");
+                System.out.println("\nInforme a data do fim (no formato dd/MM/yyyy HH:mm): ");
                 String dataFimStr = scanner.nextLine();
                 LocalDateTime dataFim = LocalDateTime.parse(dataFimStr, formatter);
                 festa.setDataFim(dataFim);
-                scanner.close();
 
                 dataValida = true;
             } catch (DateTimeParseException e) {

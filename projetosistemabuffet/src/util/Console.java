@@ -1,5 +1,4 @@
 package util;
-
 /*
  * Created on 13/06/2005
  *
@@ -440,5 +439,5 @@ public class Console
 	{
 		 return readString("Entre com um valor do tipo 'String' (\"\" default) : ", "");
 	}
-
 }
+
