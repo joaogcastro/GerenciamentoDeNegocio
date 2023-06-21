@@ -20,7 +20,6 @@ import models.Cliente;
 import models.Festa;
 import models.Funcionario;
 import util.Console;
-import util.LocalDateTimeReader;
 
 public class FestaService {
 
@@ -50,6 +49,7 @@ public class FestaService {
                 String dataFimStr = scanner.nextLine();
                 LocalDateTime dataFim = LocalDateTime.parse(dataFimStr, formatter);
                 festa.setDataFim(dataFim);
+                scanner.close();
 
                 dataValida = true;
             } catch (DateTimeParseException e) {
