@@ -2,6 +2,8 @@ package services;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +35,27 @@ public class FestaService {
 
     public static void lerDataInicioFim(Festa festa) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Informe a data de início (no formato dd/MM/yyyy HH:mm): ");
-        festa.setDataInicio(LocalDateTimeReader.readLocalDateTimeFromInput(scanner));
-        System.out.println("Informe a data do fim (no formato dd/MM/yyyy HH:mm): ");
-        festa.setDataFim(LocalDateTimeReader.readLocalDateTimeFromInput(scanner));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+        boolean dataValida = false;
+
+        while (!dataValida) {
+            try {
+                System.out.println("Informe a data de início (no formato dd/MM/yyyy HH:mm): ");
+                String dataInicioStr = scanner.nextLine();
+                LocalDateTime dataInicio = LocalDateTime.parse(dataInicioStr, formatter);
+                festa.setDataInicio(dataInicio);
+
+                System.out.println("Informe a data do fim (no formato dd/MM/yyyy HH:mm): ");
+                String dataFimStr = scanner.nextLine();
+                LocalDateTime dataFim = LocalDateTime.parse(dataFimStr, formatter);
+                festa.setDataFim(dataFim);
+
+                dataValida = true;
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato de data inválido. Tente novamente.");
+            }
+        }
     }
 
     public static void adicionarCardapio(Festa festa) {

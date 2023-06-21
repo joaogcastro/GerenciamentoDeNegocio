@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -23,12 +26,14 @@ public class Festa {
     private Cliente cliente;
     @OneToOne
     private Decoracao decoracao;
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "FESTA_CARDAPIO", joinColumns = @JoinColumn(name = "festa_id"), inverseJoinColumns = @JoinColumn(name = "cardapio_id"))
     private List<Cardapio> cardapio;
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "FESTA_FUNCIONARIO", joinColumns = @JoinColumn(name = "festa_id"), inverseJoinColumns = @JoinColumn(name = "funcionario_id"))
     private List<Funcionario> funcionarios;
     private double valorFesta;
-    
+
     public int getIdFesta() {
         return idFesta;
     }

@@ -1,4 +1,5 @@
 import controllers.Login;
+import data.ExemplosDB;
 import data.IniciarODB;
 import util.Console;
 
@@ -10,6 +11,9 @@ public class App {
                 System.out.println(
                         "\nPrograma instalado com sucesso em sua máquina, o banco de dados foi inicializado corretamente.\n");
             }
+            
+            ExemplosDB.adicionarExemplos();
+
             Login.fazerLogin();
             String resposta = Console.readString("\nDeseja sair do programa? (S/N): ").toUpperCase();
             if (resposta.equals("S")) {
